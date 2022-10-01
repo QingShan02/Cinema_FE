@@ -6,7 +6,7 @@ function TrangChuComponent() {
     return (
     <div className="container">
         <ChuyenDe title="Phim sắp ra mắt"/>
-        <ChuyenDe title="Phim đang công chiếu"/>
+        {/* <ChuyenDe title="Phim đang công chiếu"/> */}
     </div>
     );
 }
