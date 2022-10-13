@@ -4,16 +4,15 @@ import React, { useState } from 'react';
 import TrangChu from './components/TrangChu';
 import { BrowserRouter, Route, Link, NavLink, Routes } from "react-router-dom";
 import DangNhap from './components/DangNhap';
-
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>      
-        <Route path='/' exact element={<TrangChu/>}></Route>
-        <Route path='/signin' element={<DangNhap/>}></Route>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' exact element={<TrangChu />}></Route>
+          <Route path='/signin' element={<DangNhap />}></Route>
         </Routes>
 
-    </BrowserRouter>
+      </BrowserRouter>
   );
 }
 

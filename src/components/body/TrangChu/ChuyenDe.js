@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import $ from 'jquery';
+// import logo from './image/MP01';
 const ChuyenDe = (props) => {
     const [data, setData] = useState([]);
     useEffect(()=>{
@@ -20,10 +21,12 @@ const ChuyenDe = (props) => {
     //WARNING! To be deprecated in React v17. Use componentDidMount instead.
 
     const a = data.map((s, index) => {
+        // let temp = import(``);
+
         return <div key={s.maPhim} className='col-xs-3 col-sm-6 col-md-3 col-lg-3 mb-2 shadow-sm'>
             <div className="card" >
-                <img className="card-img-top " src="https://zingtv-photo.zmdcdn.me/tv_program_445_445/e/4/e4c33de5d505df18a117935ee48acbd7_1504865052.jpg" alt="Card image cap" />
-                <div className="card-body">
+                <img className="card-img-top " src={process.env.PUBLIC_URL + `/image/poster/${s.hinh}`} height ="300"alt="Card image cap" />
+                <div className="card-body " >
                     <h5 className="card-title">{s.tenPhim}</h5>
                     <p className="card-text">{s.thoiLuong}</p>
                     <a href="#" className="btn d-block btn-primary">Xem chi tiết</a>

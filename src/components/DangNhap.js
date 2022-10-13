@@ -1,35 +1,41 @@
 import { useEffect, useState } from "react";
+// import $ from 'jquery';
 import $ from 'jquery';
 import {Link}from 'react-router-dom';
+import  useCookie  from 'react-use-cookie';
 
 function DangNhap() {
     const [data,setData] = useState(false);
     const [inputs, setInputs] = useState({});
-
+const [cookie,setCookie] = useCookie("customer");
     // useEffect(()=>{
     //     handleSubmit();
     // },[]);
     const handleSubmit = (event) => {
+      // event.preventDefault();
          //event.preventDefault();
         $.ajax({
             type: "GET",
-            url: "http://localhost:8484/api/nv/findNV",
+            url: "http://localhost:8484/api/kh/findKH",
             data: inputs,
             dataType: "json",
-            success: function (response) {
-                // setData(response);
-                console.log(response);
-                setData(!data);
-                sessionStorage.setItem("user",JSON.stringify(response));
-            },
-            error: function(e){
-                console.log("Lỗi");
-                setData(0);
+            async:false,
+            success: function (response,data,setuo) {
+              console.log(response);
+              setCookie(JSON.stringify(response), {
+                days: 2,
+                SameSite: 'Strict',
+                Secure: true,
+              });
+                // localStorage.setItem("customer",JSON.stringify(response));
             }
         });
-        if(data===false){
-            event.preventDefault();
-        }
+        // const res = await axios.get("http://localhost:8484/api/nv/findNV",JSON.stringify(inputs));
+        // console.log(res);
+        
+        // if(data===false){
+        //     event.preventDefault();
+        // }
       }
     const handleChange = (event) => {
         const name = event.target.name;
@@ -50,7 +56,7 @@ function DangNhap() {
                 <div className="form-group was-validated">
                   {/* <label class="control-label col-sm-2" for="email"></label> */}
                   <div className="col-sm-12">
-                    <input type="text" className="form-control" onChange={handleChange} name="sdt" id="email" placeholder="Enter email" />
+                    <input type="text" className="form-control" onChange={handleChange} name="email" id="email" placeholder="Enter email" />
                   </div>
                 </div>
                 <div className="form-group was-validated">
