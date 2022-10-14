@@ -3,10 +3,11 @@ import './Header.css';
 import { Link } from 'react-router-dom';
 import $ from'jquery';
 import {getCookie} from 'react-use-cookie';
+
 function Menu() {
     let data =null;
      data = JSON.parse(getCookie("customer"));
-    console.log(data);
+    // console.log(data);
     let fm;
     if (data != null) {
         fm =
@@ -35,13 +36,19 @@ function Menu() {
                 </a>
             </li>
             <li className="nav-item mw-100 ">
-                <a className="nav-link w-100  active border-bottom hvr-bounce-to-right text-white text-center" href="#">Phim</a>
+                <Link className="nav-link w-100  active border-bottom hvr-bounce-to-right text-white text-center" to="/">Trang Chủ</Link>
+            </li>
+            <li className="nav-item mw-100 ">
+                <a className="nav-link w-100  active border-bottom hvr-bounce-to-right text-white text-center" href="">Phim</a>
             </li>
             <li className="nav-item mw-100">
                 <a className="nav-link w-100 border-bottom  hvr-bounce-to-right text-white  text-center" href="#">Lịch chiếu phim</a>
             </li>
             <li className="nav-item mw-100">
                 <a className="nav-link w-100 border-bottom  hvr-bounce-to-right text-white  text-center" href="#">Vé đã đặt</a>
+            </li>
+            <li className="nav-item mw-100">
+                <Link className="nav-link w-100 border-bottom  hvr-bounce-to-right text-white  text-center" to="/pro">Thông tin cá nhân</Link>
             </li>
                 {fm}
 

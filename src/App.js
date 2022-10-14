@@ -8,7 +8,7 @@ function App() {
   return (
       <BrowserRouter>
         <Routes>
-          <Route path='/' exact element={<TrangChu />}></Route>
+          <Route path='*' exact element={<TrangChu />}></Route>
           <Route path='/signin' element={<DangNhap />}></Route>
         </Routes>
 
