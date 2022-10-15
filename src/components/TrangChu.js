@@ -5,9 +5,10 @@ import React, { useState } from 'react';
 import { BrowserRouter, Route, Link, NavLink, Routes } from "react-router-dom";
 import MainKH from './body/TrangChu/ThongTinkhachHang/MainKH';
 import MainCTPhim from './body/ChiTietPhim/MainCTPhim';
+import MainChoNgoi from './body/TrangChu/ChoNgoi/MainChoNgoi';
 function TrangChu() {
 
-    return (  <div className="container-fluid ">
+  return (<div className="container-fluid ">
 
     <div className="row ">
       <div className="col-xs-2 col-sm-3 col-md-2 col-lg-2 bg-black p-0 ">
@@ -20,6 +21,7 @@ function TrangChu() {
     <Route path='/' exact element={<TrangChuComponent />}></Route>
     <Route path='/pro' element={<MainKH/>}></Route>
     <Route path='/ctphim' element={<MainCTPhim/>}></Route>
+    <Route path='/cn' element={<MainChoNgoi />}></Route>
 
   </Routes>
 

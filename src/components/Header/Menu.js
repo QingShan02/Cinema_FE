@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './Header.css';
 import { Link } from 'react-router-dom';
-import $ from'jquery';
-import {getCookie} from 'react-use-cookie';
+import $ from 'jquery';
+import { getCookie } from 'react-use-cookie';
 
 function Menu() {
     let data =null;
@@ -11,11 +11,11 @@ function Menu() {
     let fm;
     if (data != null) {
         fm =
-        <a className="nav-link w-100   text-white  text-center" >User: {data.tenKH}</a>;
-           
+            <a className="nav-link w-100   text-white  text-center" >User: {data.tenKH}</a>;
+
     } else {
-        fm =             <li className="nav-item mw-100">
-        <Link className='nav-link w-100 border-bottom  hvr-bounce-to-right text-white  text-center' to="/signin">Đăng nhập</Link></li>
+        fm = <li className="nav-item mw-100">
+            <Link className='nav-link w-100 border-bottom  hvr-bounce-to-right text-white  text-center' to="/signin">Đăng nhập</Link></li>
     }
 
 
@@ -50,7 +50,10 @@ function Menu() {
             <li className="nav-item mw-100">
                 <Link className="nav-link w-100 border-bottom  hvr-bounce-to-right text-white  text-center" to="/pro">Thông tin cá nhân</Link>
             </li>
-                {fm}
+            <li className="nav-item mw-100">
+                <Link className="nav-link w-100 border-bottom  hvr-bounce-to-right text-white  text-center" to="/cn">Xem Chỗ Ngồi</Link>
+            </li>
+            {fm}
 
 
         </ul>
