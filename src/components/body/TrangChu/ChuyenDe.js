@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import $ from 'jquery';
+import { Link } from 'react-router-dom';
 // import logo from './image/MP01';
 const ChuyenDe = (props) => {
     const [data, setData] = useState([]);
@@ -29,7 +30,7 @@ const ChuyenDe = (props) => {
                 <div className="card-body " >
                     <h5 className="card-title">{s.tenPhim}</h5>
                     <p className="card-text">{s.thoiLuong}</p>
-                    <a href="#" className="btn d-block btn-primary">Xem chi tiết</a>
+                    <Link to="/ctphim" className="btn d-block btn-primary">Xem chi tiết</Link>
                 </div>
             </div>
         </div>

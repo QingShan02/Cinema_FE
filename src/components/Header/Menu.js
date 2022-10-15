@@ -6,7 +6,7 @@ import {getCookie} from 'react-use-cookie';
 
 function Menu() {
     let data =null;
-     data = JSON.parse(getCookie("customer"));
+    //  data = JSON.parse(getCookie("customer"));
     // console.log(data);
     let fm;
     if (data != null) {

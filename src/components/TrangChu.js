@@ -4,6 +4,7 @@ import FooterComponent from './footer/FooterComponent';
 import React, { useState } from 'react';
 import { BrowserRouter, Route, Link, NavLink, Routes } from "react-router-dom";
 import MainKH from './body/TrangChu/ThongTinkhachHang/MainKH';
+import MainCTPhim from './body/ChiTietPhim/MainCTPhim';
 function TrangChu() {
 
     return (  <div className="container-fluid ">
@@ -18,6 +19,8 @@ function TrangChu() {
   <Routes>
     <Route path='/' exact element={<TrangChuComponent />}></Route>
     <Route path='/pro' element={<MainKH/>}></Route>
+    <Route path='/ctphim' element={<MainCTPhim/>}></Route>
+
   </Routes>
 
       </div>
