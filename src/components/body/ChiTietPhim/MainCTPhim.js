@@ -1,9 +1,13 @@
 import TieuDePhim from "./TieuDePhim";
 import React from 'react';
+import { useLocation } from "react-router";
 
-function MainCTPhim() {
-    return ( <TieuDePhim/> );
+function MainCTPhim(props) {
+const data = useLocation();
+console.log(data);
+    return ( <TieuDePhim maPhim={data.state.s}/> );
 }
 
 export default MainCTPhim;
+
 

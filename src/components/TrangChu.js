@@ -6,8 +6,9 @@ import { BrowserRouter, Route, Link, NavLink, Routes } from "react-router-dom";
 import MainKH from './body/TrangChu/ThongTinkhachHang/MainKH';
 import MainCTPhim from './body/ChiTietPhim/MainCTPhim';
 import MainChoNgoi from './body/TrangChu/ChoNgoi/MainChoNgoi';
-function TrangChu() {
+function TrangChu(props) {
 
+  
   return (<div className="container-fluid ">
 
     <div className="row ">
@@ -18,9 +19,9 @@ function TrangChu() {
 
       <div className="col-xs-10 col-sm-9 col-md-10 col-lg-10 bg-dark">
   <Routes>
-    <Route path='/' exact element={<TrangChuComponent />}></Route>
+    <Route path='/' exact element={<TrangChuComponent  />}></Route>
     <Route path='/pro' element={<MainKH/>}></Route>
-    <Route path='/ctphim' element={<MainCTPhim/>}></Route>
+    <Route path='/ctphim/*' element={<MainCTPhim />}></Route>
     <Route path='/cn' element={<MainChoNgoi />}></Route>
 
   </Routes>
