@@ -5,7 +5,7 @@ import $ from 'jquery';
 import { getCookie } from 'react-use-cookie';
 
 function Menu() {
-    let data = null;
+    let data =null;
     //  data = JSON.parse(getCookie("customer"));
     // console.log(data);
     let fm;
