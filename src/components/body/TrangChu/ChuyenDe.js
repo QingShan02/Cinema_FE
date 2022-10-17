@@ -4,6 +4,8 @@ import { Link, NavLink } from 'react-router-dom';
 // import logo from './image/MP01';
 const ChuyenDe = (props) => {
     const [data, setData] = useState([]);
+    // const [theloai,setTheloai] = useState([]);
+    
     useEffect(() => {
         $.ajax({
             type: "GET",
@@ -15,8 +17,10 @@ const ChuyenDe = (props) => {
                 setData(response);
             }
         });
-    }, []);
+        // getTheLoai(theloai);
 
+    }, []);
+    
 
     //WARNING! To be deprecated in React v17. Use componentDidMount instead.
 
@@ -27,7 +31,10 @@ const ChuyenDe = (props) => {
                 <div className="card-body " >
                     <h5 className="card-title">{s.tenPhim}</h5>
                     <p className="card-text">{s.thoiLuong}</p>
-                    <NavLink to={`/ctphim/${s.maPhim}`} state={{ s }} className="btn d-block btn-primary">Xem chi tiết</NavLink>
+                    <Link to={`/ctphim/${s.maPhim}`}
+                        state={{
+                            maPhim: s.maPhim
+                        }} className="btn d-block btn-primary">Xem chi tiết</Link>
                 </div>
             </div>
         </div>
