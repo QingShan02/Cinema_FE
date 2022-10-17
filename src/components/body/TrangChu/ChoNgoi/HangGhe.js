@@ -10,6 +10,7 @@ function HangGhe() {
             <div className="mt-2 pt-2 float-right fw-bold" style={{ height: '50px', width: '60px' }}>Hàng F</div>
             <div className="mt-2 pt-2 float-right fw-bold" style={{ height: '50px', width: '60px' }}>Hàng G</div>
             <div className="mt-2 pt-2 float-right fw-bold" style={{ height: '50px', width: '60px' }}>Hàng H</div>
+            <div className="mt-2 pt-2 float-right fw-bold" style={{ height: '50px', width: '60px' }}>Hàng J</div>
         </div>
 
 
