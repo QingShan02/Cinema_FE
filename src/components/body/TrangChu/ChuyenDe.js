@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 // import logo from './image/MP01';
 const ChuyenDe = (props) => {
     const [data, setData] = useState([]);
+    // const [theloai,setTheloai] = useState([]);
+    
     useEffect(() => {
         $.ajax({
             type: "GET",
@@ -16,14 +18,26 @@ const ChuyenDe = (props) => {
                 //console.log(response);
             }
         });
-    }, []);
+        // getTheLoai(theloai);
 
+    }, []);
+    
 
     //WARNING! To be deprecated in React v17. Use componentDidMount instead.
 
     const a = data.map((s, index) => {
+
+        // getTheLoai(s);
+
         // let temp = import(``);
-        console.log(s);
+        // s = {
+        //     maPhim : s.maPhim,
+        //     tenPhim: s.tenPhim,
+        //     thoiLuong: s.thoiLuong,
+        //     hinh : s.hinh,
+        //     tentheloai: theloai
+        // }
+        // console.log(s);
         return <div key={s.maPhim} className='col-xs-3 col-sm-6 col-md-3 col-lg-3 mb-2 shadow-sm'>
             <div className="card" >
                 <img className="card-img-top " src={process.env.PUBLIC_URL + `/image/poster/${s.hinh}`} height="300" alt="Card image cap" />
@@ -32,7 +46,7 @@ const ChuyenDe = (props) => {
                     <p className="card-text">{s.thoiLuong}</p>
                     <Link to={`/ctphim/${s.maPhim}`}
                         state={{
-                            s
+                            maPhim: s.maPhim
                         }} className="btn d-block btn-primary">Xem chi tiết</Link>
                 </div>
             </div>
