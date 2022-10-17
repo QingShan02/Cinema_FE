@@ -5,7 +5,7 @@ function TrangChuComponent(props) {
     
     return (
     <div className="container">
-        <ChuyenDe title="Phim sắp ra mắt"/>
+        <ChuyenDe title="Phim đang chiếu"/>
         {/* <ChuyenDe title="Phim đang công chiếu"/> */}
     </div>
     );
