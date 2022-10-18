@@ -23,7 +23,7 @@ function TrangChu() {
     <Route path='/' exact element={<TrangChuComponent  />}></Route>
     <Route path='/pro' element={<MainKH/>}></Route>
     <Route path='/ctphim/*' element={<MainCTPhim />}></Route>
-    <Route path='/cn' element={<MainChoNgoi />}></Route>
+    <Route path='/cn/*' element={<MainChoNgoi />}></Route>
 
   </Routes>
 

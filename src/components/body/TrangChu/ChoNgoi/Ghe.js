@@ -1,52 +1,38 @@
 // import React from 'react';
 import $ from 'jquery';
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
-function Ghe() {
+function Ghe(props) {
     const [data, setData] = useState([]);
     const [obj, setObj] = useState([]);
     // const [mau, setMau] = useState("bg-success");
+
+    useEffect(() => {
+
+    }, [obj]);
+
     useEffect(() => {
         $.ajax({
             type: "get",
             async: false,
-            url: "http://localhost:8484/api/cn/findGhePhong",
-            data: { MaPhong: "PC06" },
+            url: "http://localhost:8484/api/cn/findGhePhim",
+            data: props.obj,
             dataType: "json",
             success: function (response) {
                 setData(response);
+                console.log(response);
             }
         });
-        if (obj !== '') {
-            // console.log(obj);
-            setObj({ maGhe: obj.maGhe, mau: 'bg-secondary' });
-    
-            // setObj("");
-        }
-        // xuly();
-        // if (obj.maLoai == 3) {
-        //     console.log("hehe");
-        //     setMau("bg-danger");
-        // } else if (obj.maLoai == 2) {
-        //     setMau("bg-warning");
-        // } else {
-        //     setMau("bg-primary");
-        // }
-        // console.log(mau);
-    }, [obj]);
 
-    // function xuly(e) {
-    // let color = "bg-success";
-    // console.log(e);
+    }, []);
 
     // return mau;
     const temp = data.map(function (e) {
-        // console.log(e);
-        //    xuly(e);
+
         let color = null;
 
         if (e.maLoai === 3) {
-            // console.log("hehe");
             color = "bg-danger";
         } else if (e.maLoai === 2) {
             color = "bg-warning";
@@ -55,16 +41,23 @@ function Ghe() {
         }
         if (obj.maGhe !== e.maGhe) {
             return <div className="col-xs-1 col-sm-1 col-md-1 col-lg-1" key={e.maGhe}>
-                <button className={`card text-center my-2 py-2  ${color}`} onClick={() => { setObj({ maGhe: e.maGhe, mau: color }); }} style={{ width: '50px', height: 'auto' }} >
+                <button className={`card text-center my-2 py-2  ${color}`} onClick={() => { 
+                    sessionStorage.setItem("ghe",JSON.stringify(e));
+                    setObj(e); 
+                    }} style={{ width: '50px', height: 'auto' }} >
+                    <div className=" font-weight-bold text-white" >{e.tenGhe}</div>
+                </button>
+                <Link></Link>
+            </div >
+        } else {
+            console.log(obj);
+            return <div className="col-xs-1 col-sm-1 col-md-1 col-lg-1" key={e.maGhe}>
+                <button className={`card text-center my-2 py-2  bg-secondary`} onClick={() => { 
+                                        sessionStorage.setItem("ghe",JSON.stringify(e));
+                    setObj(''); }} style={{ width: '50px', height: 'auto' }} >
                     <div className=" font-weight-bold text-white" >{e.tenGhe}</div>
                 </button>
             </div >
-        }else{
-            return <div className="col-xs-1 col-sm-1 col-md-1 col-lg-1" key={e.maGhe}>
-            <button className={`card text-center my-2 py-2  ${obj.mau}`} onClick={() => { setObj({ maGhe: '', mau: '' }); }} style={{ width: '50px', height: 'auto' }} >
-                <div className=" font-weight-bold text-white" >{e.tenGhe}</div>
-            </button>
-        </div >
         }
 
     });

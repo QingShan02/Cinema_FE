@@ -40,6 +40,7 @@ const ChuyenDe = (props) => {
         </div>
             ;
     });
+    console.log(a);
     return (<div className="panel panel-default mt-20">
         <div className="panel-heading">
             <h3 className="panel-title text-danger">{props.title}</h3>
