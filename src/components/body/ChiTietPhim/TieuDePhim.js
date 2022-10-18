@@ -5,6 +5,8 @@ import $ from 'jquery';
 function TieuDePhim(props) {
     const [data, setData] = useState(props.maPhim);
     // console.log(data);
+    const [a,setA] = useState(new Array());
+
     useEffect(() => {
         $.ajax({
             type: "get",
@@ -14,17 +16,16 @@ function TieuDePhim(props) {
             dataType: "json",
             success: function (response) {
                 response.listTheloai = Object.values(response.listTheloai).toString();
+                setA(response.khunggio);
+                        //  console.log(Object.values(response.khunggio));
                 setData(response);
-                console.log(response);
-                // response.khunggio = Object.values(response.khunggio).toString();
 
-                // console.log(response.khunggio[0]);
             }
         });
         // console.log(data);
-    },[]);
-    // console.log(data.khunggio);
-    // const temp = "";
+    }, []);
+    // console.log(data.);
+   // const temp = "";
     // for (x of data.khunggio){
     //     temp+= `<div key=${x} className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
     //         <button type="button">${x}</button><br></br>
@@ -34,6 +35,13 @@ function TieuDePhim(props) {
 
 
     // };
+    // console.log(a);
+    const temp =a.map(s=>{
+        return <div key={s} className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                 <button type="button">{s}</button><br></br>
+    
+             </div> 
+    })
     // console.log(temp);
     return (
         <div className="container bg-white ">
@@ -76,7 +84,7 @@ function TieuDePhim(props) {
                         <button type="button" className="btn btn-danger">Rạp gà rán</button>
                     </div>
                     <div className="row w-100">
-                        {/* {temp} */}
+                        {temp}
                         {/* </div> */}
                     </div>
                 </div>
