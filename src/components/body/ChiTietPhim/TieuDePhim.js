@@ -8,6 +8,7 @@ function TieuDePhim(props) {
     // console.log(data);
     const [a, setA] = useState(new Array());
     const [isHide, setIsHide] = useState(false);
+    const [ngay,setNgay] = useState('');
     useEffect(() => {
         $.ajax({
             type: "get",
@@ -25,7 +26,15 @@ function TieuDePhim(props) {
 
             }
         });
-        console.log(isHide);
+        // console.log(isHide);
+    }, []);
+    const handleChange = (e) =>{
+        // console.log(e.target.value);
+        setNgay(e.target.value);
+    }
+    useEffect(() => {
+        // console.log(isHide);
+
     }, [isHide]);
     // console.log(data.);
     // const temp = "";
@@ -41,25 +50,27 @@ function TieuDePhim(props) {
     // console.log(a);
     const temp = a.map(s => {
         return <div key={s} className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-            <Link  state={{
-                            maPhim: data.maPhim,
-                            ngay: '2022-09-01',
-                            gioBatDau: s
-                        }} to={`/cn/${props.maPhim}`}>{s}</Link><br></br>
+            <Link className='btn btn-primary' state={{
+                maPhim: data.maPhim,
+                ngay: '2022-09-01',
+                gioBatDau: s
+            }} to={`/cn/${props.maPhim}`}>{s}</Link><br></br>
 
         </div>
     })
-    const nd = null;
-    if (isHide) {
-        nd = ()=>{ return <div className="row">
-        <div>
-            <h4>NỘI DUNG PHIM</h4>
-            <hr style={{ width: 182, height: 2, backgroundColor: 'red', marginLeft: 0, marginTop: '-2px' }} />
-        </div>
-        <div>
-            <p>{props.moTa}</p>
-        </div>
-    </div>};
+    let nd = null;
+    if (!isHide) {
+        nd = (<div className="row mt-10" style={{height:500}}>
+            <div>
+                <h4>NỘI DUNG PHIM</h4>
+                <hr style={{ width: 182, height: 2, backgroundColor: 'red', marginLeft: 0, marginTop: '-2px' }} />
+            </div>
+            <div>
+                <p>{data.moTa}</p>
+            </div>
+        </div>);
+    } else {
+        nd = (<iframe className='w-100 pt-10' height={500} src={data.traller} ></iframe>);
     }
     // console.log(temp);
     return (
@@ -70,7 +81,7 @@ function TieuDePhim(props) {
                     {/* <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
                         Trailer
                     </button> */}
-                    <iframe width={200} height={150} src={data.traller} ></iframe>
+                    {/* <iframe width={200} height={150} src={data.traller} ></iframe> */}
                 </div>
                 <div className="col-xs-9 col-sm-9 col-md-9 col-lg-9">
                     <h2 style={{ color: "red" }}>{data.tenPhim}</h2>
@@ -81,19 +92,19 @@ function TieuDePhim(props) {
                     <p>Quốc gia: {data.quocGia}</p>
                     <p>Đạo diễn: {data.daoDien}</p>
                 </div>
-                <div class="container mt-3">
+                <div className="container mt-3">
 
-                    <div class="row">
-                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                            <button type="button" class="btn btn-danger " onClick={() => setIsHide(!isHide)} >Nội dung</button>
-                            <div id="demo" >
-                                {/* {nd} */}
-                            </div>
+                    <div className="row">
+                        <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <button type="button" className="btn btn-danger " onClick={() => setIsHide(false)} >Nội dung</button>
+
                         </div>
 
-                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                            <button type="button" class="btn btn-danger " data-bs-toggle="collapse" data-bs-target="#demo">Trailer</button>
-
+                        <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <button type="button" className="btn btn-danger " onClick={() => setIsHide(true)} data-bs-toggle="collapse" data-bs-target="#demo">Trailer</button>
+                        </div>
+                        <div className="container mt-10" >
+                            {nd}
                         </div>
                     </div>
 
@@ -110,7 +121,7 @@ function TieuDePhim(props) {
                 </div>
                 <div className="w-100">
                     <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                        <input type="date" name="date" id="inputdate" className="form-control" defaultValue required="required" /><br />
+                        <input type="date" name="date" id="inputdate" className="form-control" onChange={handleChange} defaultValue="2022-09-01" required="required" /><br />
                     </div>
                 </div>
 
