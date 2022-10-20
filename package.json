@@ -43,10 +43,6 @@
     ]
   },
   "devDependencies": {
-<<<<<<< HEAD
     "react-scripts": "^5.0.1"
-=======
-    "react-script": "^2.0.5"
->>>>>>> d33762c2bfb0a7471dfc2d31c403dccc0d3f2e0c
   }
 }
