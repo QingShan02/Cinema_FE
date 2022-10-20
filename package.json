@@ -14,7 +14,6 @@
     "react-cookie": "^4.1.1",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.2",
-    "react-scripts": "^5.0.1",
     "react-session-api": "^1.1.0",
     "react-use-cookie": "^1.4.0",
     "web-vitals": "^2.1.4"
@@ -44,6 +43,6 @@
     ]
   },
   "devDependencies": {
-    "react-script": "^2.0.5"
+    "react-scripts": "^5.0.1"
   }
 }
