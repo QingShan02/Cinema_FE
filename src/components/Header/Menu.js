@@ -60,7 +60,9 @@ function Menu() {
                 <Link className="nav-link w-100 border-bottom  hvr-bounce-to-right text-white  text-center" to="/cn">Xem Chỗ Ngồi</Link>
             </li>
             {fm}
-
+            <li className="nav-item mw-100">
+                <Link className="nav-link w-100 border-bottom  hvr-bounce-to-right text-white  text-center" to="/dk">Đăng kí</Link>
+            </li>
 
         </ul>
     );
