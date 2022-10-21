@@ -27,5 +27,4 @@ function khungdangki() {
 
     );
 }
-
 export default khungdangki;
