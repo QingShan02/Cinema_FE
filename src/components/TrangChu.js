@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Link, NavLink, Routes } from "react-router-dom";
 import MainKH from './body/TrangChu/ThongTinkhachHang/MainKH';
 import MainCTPhim from './body/ChiTietPhim/MainCTPhim';
 import MainChoNgoi from './body/TrangChu/ChoNgoi/MainChoNgoi';
+import MainTP from './body/Topping/MainTP';
 function TrangChu() {
 
   
@@ -24,6 +25,7 @@ function TrangChu() {
     <Route path='/pro' element={<MainKH/>}></Route>
     <Route path='/ctphim/*' element={<MainCTPhim />}></Route>
     <Route path='/cn/*' element={<MainChoNgoi />}></Route>
+    <Route path='/tp/*' element={<MainTP />}></Route>
 
   </Routes>
 
