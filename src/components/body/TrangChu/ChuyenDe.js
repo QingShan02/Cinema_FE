@@ -5,7 +5,7 @@ import { Link, NavLink } from 'react-router-dom';
 const ChuyenDe = (props) => {
     const [data, setData] = useState([]);
     // const [theloai,setTheloai] = useState([]);
-    
+
     useEffect(() => {
         $.ajax({
             type: "GET",
@@ -20,7 +20,7 @@ const ChuyenDe = (props) => {
         // getTheLoai(theloai);
 
     }, []);
-    
+
 
     //WARNING! To be deprecated in React v17. Use componentDidMount instead.
 

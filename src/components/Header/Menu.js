@@ -54,6 +54,9 @@ function Menu() {
                 <Link className="nav-link w-100 border-bottom  hvr-bounce-to-right text-white  text-center" to="/pro">Thông tin cá nhân</Link>
             </li>
             <li className="nav-item mw-100">
+                <Link className="nav-link w-100 border-bottom  hvr-bounce-to-right text-white  text-center" to="/tp">Topping</Link>
+            </li>
+            <li className="nav-item mw-100">
                 <Link className="nav-link w-100 border-bottom  hvr-bounce-to-right text-white  text-center" to="/cn">Xem Chỗ Ngồi</Link>
             </li>
             {fm}
