@@ -17,8 +17,10 @@ function MainChoNgoi() {
         });
     }, []);
     function handleClick(event) {
-        event.preventDefault();
-        alert((sessionStorage.getItem("ghe")) == null || (sessionStorage.getItem("ghe"))=="" ? "chưa chọn ghé" : "đã chọn ghé");
+        if((sessionStorage.getItem("ghe")) == null || (sessionStorage.getItem("ghe"))==""){
+            event.preventDefault();
+            alert("chưa chọn ghé");
+        }
     }
     return (
 
@@ -29,7 +31,7 @@ function MainChoNgoi() {
                     <HangGhe />
                     <Ghe obj={data.state} />
                     <ChuThich />
-                    <Link className="btn btn-primary" onClick={handleClick} to="/">Tiếp theo</Link>
+                    <Link className="btn btn-primary" onClick={handleClick} to="/thanhtoan">Tiếp theo</Link>
                 </div>
             </div>
         </div>
