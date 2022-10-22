@@ -39,26 +39,36 @@ function Ghe(props) {
         } else {
             color = "bg-success";
         }
-        if (obj.maGhe !== e.maGhe) {
+        if(e.idVe==0){
+            if (obj.maGhe !== e.maGhe) {
+                return <div className="col-xs-1 col-sm-1 col-md-1 col-lg-1" key={e.maGhe}>
+                    <button className={`card text-center my-2 py-2  ${color}`} onClick={() => { 
+                        sessionStorage.setItem("ghe",JSON.stringify(e));
+                        setObj(e); 
+                        }} style={{ width: '50px', height: 'auto' }} >
+                        <div className=" font-weight-bold text-white" >{e.tenGhe}</div>
+                    </button>
+                    {/* <Link></Link> */}
+                </div >
+            } else {
+                console.log(obj);
+                return <div className="col-xs-1 col-sm-1 col-md-1 col-lg-1" key={e.maGhe}>
+                    <button className={`card text-center my-2 py-2  bg-info`} onClick={() => { 
+                                            sessionStorage.setItem("ghe","");
+                        setObj(''); }} style={{ width: '50px', height: 'auto' }} >
+                        <div className=" font-weight-bold text-white" >{e.tenGhe}</div>
+                    </button>
+                </div >
+            }
+        } else{
             return <div className="col-xs-1 col-sm-1 col-md-1 col-lg-1" key={e.maGhe}>
-                <button className={`card text-center my-2 py-2  ${color}`} onClick={() => { 
-                    sessionStorage.setItem("ghe",JSON.stringify(e));
-                    setObj(e); 
-                    }} style={{ width: '50px', height: 'auto' }} >
-                    <div className=" font-weight-bold text-white" >{e.tenGhe}</div>
-                </button>
-                <Link></Link>
-            </div >
-        } else {
-            console.log(obj);
-            return <div className="col-xs-1 col-sm-1 col-md-1 col-lg-1" key={e.maGhe}>
-                <button className={`card text-center my-2 py-2  bg-secondary`} onClick={() => { 
-                                        sessionStorage.setItem("ghe",JSON.stringify(e));
-                    setObj(''); }} style={{ width: '50px', height: 'auto' }} >
-                    <div className=" font-weight-bold text-white" >{e.tenGhe}</div>
-                </button>
-            </div >
+                    <button className={`card text-center my-2 py-2  bg-secondary`}  style={{ width: '50px', height: 'auto' }} >
+                        <div className=" font-weight-bold text-white" >{e.tenGhe}</div>
+                    </button>
+                    {/* <Link></Link> */}
+                </div >
         }
+        
 
     });
     return (

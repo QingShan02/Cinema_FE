@@ -60,7 +60,7 @@ function TieuDePhim(props) {
     })
     let nd = null;
     if (!isHide) {
-        nd = (<div className="row mt-10" style={{height:200}}>
+        nd = (<div className="row mt-10" style={{height:350}}>
             <div>
                 <h4>NỘI DUNG PHIM</h4>
                 <hr style={{ width: 182, height: 2, backgroundColor: 'red', marginLeft: 0, marginTop: '-2px' }} />

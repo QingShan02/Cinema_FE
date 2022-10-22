@@ -18,7 +18,7 @@ function MainChoNgoi() {
     }, []);
     function handleClick(event) {
         event.preventDefault();
-        alert((JSON.parse(sessionStorage.getItem("ghe")) == null) ? "chưa chọn ghé" : "đã chọn ghé");
+        alert((sessionStorage.getItem("ghe")) == null || (sessionStorage.getItem("ghe"))=="" ? "chưa chọn ghé" : "đã chọn ghé");
     }
     return (
 
