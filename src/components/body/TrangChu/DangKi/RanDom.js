@@ -1,8 +1,8 @@
-import React from 'react';
-import { getCookie } from 'react-use-cookie';
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import emailjs from '@emailjs/browser';
 
 function RanDom() {
-
     let allCharacters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
         'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd',
         'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
@@ -21,19 +21,34 @@ function RanDom() {
         maCap = ` ${event.target.value}`;
         return maCap;
     }
-    const handel = () => {
-        if (maCap != capt || maCap === '') {
-            console.log(maCap);
-            alert('Mã không trùng khớp!');
-        }
+    let email;
+
+
+    function kt() {
+        const data = sessionStorage.getItem('i4');
     }
+
+
+    const sendEmail = (e) => {
+        e.preventDefault();
+
+        emailjs.send('service_76rhmqm', 'template_y7qq009', { to_email: email}, 'aYN1rK9I-975kaFc3', {
+        })
+            .then((result) => {
+                console.log(result.text);
+            }, (error) => {
+                console.log(error.text);
+            });
+    };
     return (
         <div className="row" >
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
             <label className="col-form-label fw-bold">Vui lòng nhập kí tự bên dưới</label>
             <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
                 <form action="#" >
-                    <input className='form-control' type="text" onChange={handelChange} placeholder="Nhập captcha" maxLength={6} spellCheck="false" required />
+                    <input className='form-control' type="text" onChange={handelChange} onKeyUp={() => {
+                        email = sessionStorage.getItem('email');
+                    }} placeholder="Nhập captcha" maxLength={6} spellCheck="false" required />
                 </form>
 
             </div>
@@ -44,9 +59,9 @@ function RanDom() {
                 <div className="my-2 col-auto">
                     <input type="checkbox" /><span className="mx-2">Tôi đồng ý với các điều khoản của CGV</span>
                 </div>
-                <button type="button" className="btn btn-danger px-5 fw-bold mb-2" onClick={handel}>Đăng Kí</button>
+                <Link type="button" className="btn btn-danger px-5 fw-bold mb-2" onClick={sendEmail} to='/XacNhan'>Đăng Kí</Link>
             </div>
-        </div>
+        </div >
 
     );
 }

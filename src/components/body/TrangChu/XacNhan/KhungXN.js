@@ -2,16 +2,13 @@ import React from 'react';
 function KhungXN() {
     return (
         <div className='row'>
-
-            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                <div>
-                    <label className='fw-bold fs-2' >Nhập Mã Xác Thực</label>
-                    <input type="text" className="form-control" required="required" />
-                    <label className='fw-bold fs-2'>Xác Nhận Mã Xác Nhận</label>
-                    <input type="text" className="form-control" required="required" />
-                </div>
+            <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6  mx-auto">
+                <label className="fw-bold fs-5">Nhập Mã Xác Thực</label>
+                <input type="text" className="form-control" required="required" />
+                <label className="fw-bold fs-5">Xác Nhận Mã Xác Thực</label>
+                <input type="text" className="form-control" required="required" />
+                <button type="button" className="btn btn-danger px-5 fw-bold my-2 text-white">Xác Nhận</button>
             </div>
-            <button type="button" class="btn btn-danger px-5 fw-bold mb-2 text-white">Xác Nhận</button>
         </div>
     );
 }

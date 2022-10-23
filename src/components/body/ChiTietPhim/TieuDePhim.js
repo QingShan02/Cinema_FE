@@ -8,7 +8,7 @@ function TieuDePhim(props) {
     // console.log(data);
     const [a, setA] = useState(new Array());
     const [isHide, setIsHide] = useState(false);
-    const [ngay,setNgay] = useState('');
+    const [ngay, setNgay] = useState('');
     useEffect(() => {
         $.ajax({
             type: "get",
@@ -28,7 +28,7 @@ function TieuDePhim(props) {
         });
         // console.log(isHide);
     }, []);
-    const handleChange = (e) =>{
+    const handleChange = (e) => {
         // console.log(e.target.value);
         setNgay(e.target.value);
     }
@@ -49,7 +49,7 @@ function TieuDePhim(props) {
     // };
     // console.log(a);
     const temp = a.map(s => {
-        return <div key={s} className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        return <div key={s} className="col-xs-6 col-sm-6 col-md-6 col-lg-6 m-2 p-2">
             <Link className='btn btn-primary' state={{
                 maPhim: data.maPhim,
                 ngay: '2022-09-01',
@@ -60,7 +60,7 @@ function TieuDePhim(props) {
     })
     let nd = null;
     if (!isHide) {
-        nd = (<div className="row mt-10" style={{height:350}}>
+        nd = (<div className="row mt-10" style={{ height: 350 }}>
             <div>
                 <h4>NỘI DUNG PHIM</h4>
                 <hr style={{ width: 182, height: 2, backgroundColor: 'red', marginLeft: 0, marginTop: '-2px' }} />
@@ -70,7 +70,7 @@ function TieuDePhim(props) {
             </div>
         </div>);
     } else {
-        nd = (<iframe className='w-75 pt-10 d-block mx-auto ' height={350}  src={data.traller} ></iframe>);
+        nd = (<iframe className='w-75 pt-10 d-block mx-auto ' height={350} src={data.traller} ></iframe>);
     }
     // console.log(temp);
     return (
@@ -96,12 +96,12 @@ function TieuDePhim(props) {
 
                     <div className="row ">
                         <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6 " >
-                            <button style={{marginLeft: '275px', color: 'rgba(F,F,F,F)'}} type="button" className="btn btn-outline-danger col-xs-6 col-sm-6 col-md-6 col-lg-6  " onClick={() => setIsHide(false)} >Nội dung</button>
+                            <button style={{ marginLeft: '275px', color: 'rgba(F,F,F,F)' }} type="button" className="btn btn-outline-danger col-xs-6 col-sm-6 col-md-6 col-lg-6  " onClick={() => setIsHide(false)} >Nội dung</button>
 
                         </div>
 
                         <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                            <button  type="button" className="btn btn-outline-danger col-xs-6 col-sm-6 col-md-6 col-lg-6 " onClick={() => setIsHide(true)} data-bs-toggle="collapse" data-bs-target="#demo">Trailer</button>
+                            <button type="button" className="btn btn-outline-danger col-xs-6 col-sm-6 col-md-6 col-lg-6 " onClick={() => setIsHide(true)} data-bs-toggle="collapse" data-bs-target="#demo">Trailer</button>
                         </div>
                         <div className="container  col-xs-12 col-sm-12 col-md-12 col-lg-12" >
                             {nd}
@@ -109,7 +109,7 @@ function TieuDePhim(props) {
                     </div>
 
                 </div>
-   
+
                 <div className="row">
                     <div>
                         <h4>LỊCH CHIẾU</h4>
