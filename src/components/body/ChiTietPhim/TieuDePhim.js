@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import $ from 'jquery';
 import Collapse from './collapse';
 import { Link } from 'react-router-dom';
+import { getCookie } from 'react-use-cookie';
 
 function TieuDePhim(props) {
     const [data, setData] = useState(props.maPhim);
@@ -36,21 +37,26 @@ function TieuDePhim(props) {
         // console.log(isHide);
 
     }, [isHide]);
-    // console.log(data.);
-    // const temp = "";
-    // for (x of data.khunggio){
-    //     temp+= `<div key=${x} className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-    //         <button type="button">${x}</button><br></br>
-
-    //     </div>`
-    //         ;
-
-
-    // };
-    // console.log(a);
+    const handleCheck = (e)=>{
+        if(getCookie("customer")==''){
+            alert("Vui lòng Đăng nhập");
+            e.preventDefault();
+        }else{
+            sessionStorage.setItem("xuatchieu",JSON.stringify({
+                maPhim: data.maPhim,
+                tenPhim: data.tenPhim,
+                ngay: '2022-09-01',
+                gioBatDau: e.target.text}));
+        }
+    }
     const temp = a.map(s => {
+<<<<<<< HEAD
         return <div key={s} className="col-xs-6 col-sm-6 col-md-6 col-lg-6 m-2 p-2">
             <Link className='btn btn-primary' state={{
+=======
+        return <div key={s} className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <Link className='btn btn-primary' onClick={handleCheck} state={{
+>>>>>>> ecf9a610f07604f9ae81f9f393a30c072ad512c0
                 maPhim: data.maPhim,
                 ngay: '2022-09-01',
                 gioBatDau: s

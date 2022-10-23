@@ -8,7 +8,11 @@ import MainCTPhim from './body/ChiTietPhim/MainCTPhim';
 import MainChoNgoi from './body/TrangChu/ChoNgoi/MainChoNgoi';
 import MainTP from './body/Topping/MainTP';
 import MainDk from './body/TrangChu/DangKi/MainDK';
+<<<<<<< HEAD
 import MainXN from './body/TrangChu/XacNhan/MainXN';
+=======
+import MainThanhToan from './body/ThanhToan/MainThanhToan';
+>>>>>>> ecf9a610f07604f9ae81f9f393a30c072ad512c0
 function TrangChu() {
 
 
@@ -21,7 +25,7 @@ function TrangChu() {
 
         </div>
 
-        <div className="col-xs-10 col-sm-9 col-md-10 col-lg-10 bg-dark">
+        <div className="col-xs-10 col-sm-9 col-md-10 col-lg-10 bg-dark p-0">
           <Routes>
             <Route path='/' exact element={<TrangChuComponent />}></Route>
             <Route path='/pro' element={<MainKH />}></Route>
@@ -29,7 +33,11 @@ function TrangChu() {
             <Route path='/cn/*' element={<MainChoNgoi />}></Route>
             <Route path='/dk/*' element={<MainDk />}></Route>
             <Route path='/tp/*' element={<MainTP />}></Route>
+<<<<<<< HEAD
             <Route path='/XacNhan' element={<MainXN />}></Route>
+=======
+            <Route path='/thanhtoan/*' element={< MainThanhToan/>}></Route>
+>>>>>>> ecf9a610f07604f9ae81f9f393a30c072ad512c0
 
           </Routes>
 
