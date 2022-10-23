@@ -3,7 +3,7 @@ import KhungXN from './KhungXN'
 function MainXN() {
     return (
 
-        <div className="container">
+        <div className="container bg-white" style={{ height: '600px' }}>
             <KhungXN />
         </div>
 
@@ -11,6 +11,4 @@ function MainXN() {
     );
 }
 
-export default Mai
-
-nXN;
+export default MainXN;
