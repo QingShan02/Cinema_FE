@@ -8,10 +8,10 @@ import MainCTPhim from './body/ChiTietPhim/MainCTPhim';
 import MainChoNgoi from './body/TrangChu/ChoNgoi/MainChoNgoi';
 import MainTP from './body/Topping/MainTP';
 import MainDk from './body/TrangChu/DangKi/MainDK';
-
 import MainXN from './body/TrangChu/XacNhan/MainXN';
 
 import MainThanhToan from './body/ThanhToan/MainThanhToan';
+import DangNhap from './DangNhap';
 function TrangChu() {
 
 

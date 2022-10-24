@@ -11,7 +11,6 @@ useEffect(() => {
         behavior: "smooth"
       });
   }, [])
-console.log(data);
     return ( <TieuDePhim maPhim={data.state.maPhim}/> );
 }
 

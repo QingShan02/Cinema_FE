@@ -21,7 +21,7 @@ function TieuDePhim(props) {
                 response.listTheloai = Object.values(response.listTheloai).toString();
                 response.traller = response.traller.replace("watch?v=", "embed/");
                 setA(response.khunggio);
-                console.log(response);
+                // console.log(response);
                 //  console.log(Object.values(response.khunggio));
                 setData(response);
 
@@ -37,27 +37,31 @@ function TieuDePhim(props) {
         // console.log(isHide);
 
     }, [isHide]);
-    const handleCheck = (e)=>{
-        if(getCookie("customer")==''){
-            alert("Vui lòng Đăng nhập");
-            e.preventDefault();
-        }else{
-            sessionStorage.setItem("xuatchieu",JSON.stringify({
-                maPhim: data.maPhim,
-                tenPhim: data.tenPhim,
-                ngay: '2022-09-01',
-                gioBatDau: e.target.text}));
-        }
+    const handleCheck = (e) => {
+        sessionStorage.setItem("xuatchieu", JSON.stringify({
+            maPhim: data.maPhim,
+            tenPhim: data.tenPhim,
+            ngay: '2022-09-01',
+            gioBatDau: e.target.text
+        }));
     }
     const temp = a.map(s => {
-        return <div key={s} className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-            <Link className='btn btn-primary' onClick={handleCheck} state={{
-                maPhim: data.maPhim,
-                ngay: '2022-09-01',
-                gioBatDau: s
-            }} to={`/cn/${props.maPhim}`}>{s}</Link><br></br>
+        if (getCookie("customer") == '') {
+            return <div key={s} className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <Link className='btn btn-primary' onClick={(e)=>{if(!window.confirm("Vui lòng đăng nhập trước")){
+                    e.preventDefault();
+                }}} state={{path:window.location.pathname}} to='/signin'>{s}</Link><br></br>
+            </div>
+        } else {
+            return <div key={s} className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <Link className='btn btn-primary' onClick={handleCheck} state={{
+                    maPhim: data.maPhim,
+                    ngay: '2022-09-01',
+                    gioBatDau: s
+                }} to={`/cn/${props.maPhim}`}>{s}</Link><br></br>
 
-        </div>
+            </div>
+        }
     })
     let nd = null;
     if (!isHide) {

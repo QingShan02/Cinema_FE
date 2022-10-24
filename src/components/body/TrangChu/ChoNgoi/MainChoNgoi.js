@@ -31,7 +31,7 @@ function MainChoNgoi() {
                     <HangGhe />
                     <Ghe obj={data.state} />
                     <ChuThich />
-                    <Link className="btn btn-primary" onClick={handleClick} to="/thanhtoan">Tiếp theo</Link>
+                    <Link className="btn btn-primary" onClick={handleClick} to="/tp">Tiếp theo</Link>
                 </div>
             </div>
         </div>

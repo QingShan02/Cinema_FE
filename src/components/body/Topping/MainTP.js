@@ -8,8 +8,10 @@ import { Link } from 'react-router-dom';
 function MainTP(props) {
     const [data, setData] = useState([]);
     const [inputs, setInputs] = useState({});
+    const [gia, setGia] = useState({});
 
     useEffect(() => {
+        sessionStorage.removeItem("topping");
         $.ajax({
             type: "GET",
             url: "http://localhost:8484/api/tp/getAllTP",
@@ -22,12 +24,14 @@ function MainTP(props) {
         });
     }, []);
 
-    const handleChange = (event) => {
+    const handleChange = (s,event) => {
         let topping = {
-            name: event.target.name,
-            id: event.target.id,
-            value: event.target.value
+            tenTopping: s.tenTopping,
+            maTopping: s.maTopping,
+            soluongmua: event.target.value,
+            gia: s.gia
         };
+        // console.log(s,topping);
 
         let toppingJsonString = JSON.stringify(topping);
         sessionStorage.setItem('topping', toppingJsonString);
@@ -42,7 +46,7 @@ function MainTP(props) {
                 <div className="card-body">
                     <TenTP tenTopping={s.tenTopping} />
                     <br />
-                    <input type="number" onChange={handleChange} id={s.maTopping} name={s.tenTopping}></input>
+                    <input type="number" onChange={(e)=>{handleChange(s,e)}} id={s.maTopping} name={s.tenTopping}></input>
                 </div>
             </div>
         </div>
@@ -56,7 +60,7 @@ function MainTP(props) {
 
             <div className="col-xs-9 col-sm-9 col-md-9 col-lg-9" />
 
-            <button type="button" className="btn btn-danger mt-4 mb-4 col-2">Đặt hàng</button>
+            <Link className="btn btn-danger mt-4 mb-4 col-2" to="/thanhtoan">Thanh toán</Link>
 
         </div>
 

@@ -4,13 +4,15 @@ import React, { useState } from 'react';
 import TrangChu from './components/TrangChu';
 import { createBrowserRouter,BrowserRouter, Route, Link, NavLink, Routes } from "react-router-dom";
 import DangNhap from './components/DangNhap';
+import { createBrowserHistory } from 'history';
 function App() {
+  const history = createBrowserHistory();
   return (
-      <BrowserRouter basename='/RapChieuPhim_Web'>
+      <BrowserRouter basename='/RapChieuPhim_Web' history={history}>
         <Routes>
           <Route path='*' exact element={<TrangChu />}></Route>
-        <Route path='/signin' element={<DangNhap />}></Route>
-        
+          <Route path='/signin' element={<DangNhap />}></Route>
+
 
         </Routes>
 
