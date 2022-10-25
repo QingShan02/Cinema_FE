@@ -17,9 +17,9 @@ function MainChoNgoi() {
         });
     }, []);
     function handleClick(event) {
-        if((sessionStorage.getItem("ghe")) == null || (sessionStorage.getItem("ghe"))==""){
+        if ((sessionStorage.getItem("ghe")) == null || (sessionStorage.getItem("ghe")) == "") {
             event.preventDefault();
-            alert("chưa chọn ghé");
+            alert("chưa chọn ghế");
         }
     }
     return (

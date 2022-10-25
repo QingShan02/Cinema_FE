@@ -2,19 +2,19 @@
 
 import React, { useState } from 'react';
 import TrangChu from './components/TrangChu';
-import { createBrowserRouter,BrowserRouter, Route, Link, NavLink, Routes } from "react-router-dom";
+import { createBrowserRouter, BrowserRouter, Route, Link, NavLink, Routes } from "react-router-dom";
 import DangNhap from './components/DangNhap';
+import MainXN from './components/body/TrangChu/XacNhan/MainXN';
 function App() {
   return (
-      <BrowserRouter basename='/RapChieuPhim_Web'>
-        <Routes>
-          <Route path='*' exact element={<TrangChu />}></Route>
+    <BrowserRouter basename='/RapChieuPhim_Web'>
+      <Routes>
+        <Route path='*' exact element={<TrangChu />}></Route>
         <Route path='/signin' element={<DangNhap />}></Route>
-        
 
-        </Routes>
+      </Routes>
 
-      </BrowserRouter>
+    </BrowserRouter>
   );
 }
 
