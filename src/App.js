@@ -2,21 +2,32 @@
 
 import React, { useState } from 'react';
 import TrangChu from './components/TrangChu';
-import { createBrowserRouter,BrowserRouter, Route, Link, NavLink, Routes } from "react-router-dom";
+import { createBrowserRouter, BrowserRouter, Route, Link, NavLink, Routes } from "react-router-dom";
 import DangNhap from './components/DangNhap';
+<<<<<<< HEAD
+import MainXN from './components/body/TrangChu/XacNhan/MainXN';
+=======
 import { createBrowserHistory } from 'history';
+>>>>>>> 3969fe6db59d178ba3c5cfbf3584275136f904a6
 function App() {
   const history = createBrowserHistory();
   return (
+<<<<<<< HEAD
+    <BrowserRouter basename='/RapChieuPhim_Web'>
+      <Routes>
+        <Route path='*' exact element={<TrangChu />}></Route>
+        <Route path='/signin' element={<DangNhap />}></Route>
+=======
       <BrowserRouter basename='/RapChieuPhim_Web' history={history}>
         <Routes>
           <Route path='*' exact element={<TrangChu />}></Route>
           <Route path='/signin' element={<DangNhap />}></Route>
 
+>>>>>>> 3969fe6db59d178ba3c5cfbf3584275136f904a6
 
-        </Routes>
+      </Routes>
 
-      </BrowserRouter>
+    </BrowserRouter>
   );
 }
 

@@ -33,7 +33,7 @@ function TrangChu() {
             <Route path='/dk/*' element={<MainDk />}></Route>
             <Route path='/tp/*' element={<MainTP />}></Route>
             <Route path='/XacNhan' element={<MainXN />}></Route>
-            <Route path='/thanhtoan/*' element={< MainThanhToan/>}></Route>
+            <Route path='/thanhtoan/*' element={< MainThanhToan />}></Route>
 
           </Routes>
 
