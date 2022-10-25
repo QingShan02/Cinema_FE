@@ -49,7 +49,7 @@ function Bill() {
         if(data2!=null){
             $.ajax({
                 type: "get",
-                url: "http://localhost:8484/api/ve/insertCTTP",
+                url: "http://localhost:8484/api/tp/insertCTTP",
                 data: {idve:idve1,maTopping:data2.maTopping,soLuongMua:data2.soluongmua},
                 dataType: "json",
                 success: function (response) {
