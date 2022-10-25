@@ -3,22 +3,52 @@ import './Header.css';
 import { Link } from 'react-router-dom';
 import $ from 'jquery';
 import { getCookie } from 'react-use-cookie';
+// import  useCookie  from 'react-use-cookie';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { useCookies } from 'react-cookie';
+// import { Cookies } from 'react-cookie';
 
 function Menu() {
-    let data = null;
-    if (getCookie("customer") != '') {
-        console.log(1);
-        data = JSON.parse(getCookie("customer"));
-    }
+    // let data = null;
+    const [isShow, setIsShow] = useState(false);
+    const [cookie,setCookie, removeCookie] = useCookies("customer");
+    const [data,setData] = useState(null);
+    useEffect(()=>{
+
+    },[data]);
+    useEffect(()=>{
+        if (getCookie("customer")!= '') {
+            setData(JSON.parse(getCookie("customer")));
+            // console.log(window.history);
+            console.log(data);
+        }
+    },[]);
     // console.log(data);
     let fm;
+    let menu = null;
+    if (isShow) {
+        menu = <ul className="dropdown-menu d-block " style={{backgroundColor:"transparent",position:"static" }} id="menu">
+            <li><Link className="dropdown-item hvr-bounce-to-right text-white  text-center"  to="/pro">Thông tin cá nhân</Link></li>
+            <li><a className="dropdown-item hvr-bounce-to-right text-white  text-center" onClick={()=> {removeCookie("customer"); setData(null)}} >Đăng xuất</a></li>
+            {/* <li><a className="dropdown-item text-white" href="#">A third link</a></li> */}
+        </ul>;
+    }else{
+        menu = '';
+    }
     if (data != null) {
-        fm =
-            <a className="nav-link w-100   text-white  text-center" >User: {data.tenKH}</a>;
+        fm = <><li className="nav-item mw-100 ">
+            <a   onClick={() => setIsShow(!isShow)} role="button" aria-expanded="false" className="nav-link  dropdown-toggle w-100  text-white  text-center" ><i className="fa fa-user" aria-hidden="true"></i> {data.tenKH}</a>
+            {menu}
+        </li>
+        </>
 
     } else {
-        fm = <li className="nav-item mw-100">
-            <Link className='nav-link w-100 border-bottom  hvr-bounce-to-right text-white  text-center' to="/signin">Đăng nhập</Link></li>
+        fm = <><li className="nav-item mw-100">
+            <Link className='nav-link w-100 border-bottom  hvr-bounce-to-right text-white  text-center' state={{path:window.location.pathname}} to="/signin"><i className="fa fa-sign-in" aria-hidden="true"></i> Đăng nhập</Link></li>
+            <li className="nav-item mw-100">
+            <Link className="nav-link w-100 border-bottom  hvr-bounce-to-right text-white  text-center" to="/dk"><i className="fa fa-key" aria-hidden="true"></i> Đăng kí</Link>
+        </li></>
     }
 
 
@@ -27,39 +57,25 @@ function Menu() {
     return (
 
         <ul className="nav flex-column p-0 " id="menu">
-            <li className='nav-item'>
+            <li className='nav-item mw-100 '>
                 <a className="navbar-brand mt-2 mt-lg-0" href="#">
                     <img
                         src="https://play-lh.googleusercontent.com/0oH3J4rY4gf5pILGT_zNMRkdj78UK5lwrP9AxC3_wJ_goNEHmZlAwxAX3JS-7wEUuo8=w240-h480-rw"
                         //  height="100" 
-                        className='img-fluid mx-auto d-block '
+                        className='img-fluid w-100 d-block pb-10'
                         alt="MDB Logo"
                         loading="lazy"
                     />
+                    <div style={{height:20}}> </div>
                 </a>
             </li>
             <li className="nav-item mw-100 ">
-                <Link className="nav-link w-100  active border-bottom hvr-bounce-to-right text-white text-center" to="/"> <svg xmlns="http://www.w3.org/2000/svg" width={16} height={16} fill="currentColor" className="bi bi-house-door-fill" viewBox="0 0 16 16"><path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z" /></svg>Trang Chủ</Link>
+                <Link className="nav-link w-100  active border-bottom hvr-bounce-to-right text-white text-center" to="/"> <i className="fa fa-home" aria-hidden="true" /> Trang Chủ</Link>
             </li>
-            <li className="nav-item mw-100 ">
-                <a className="nav-link w-100  active border-bottom hvr-bounce-to-right text-white text-center" href="">Phim</a>
-            </li>
-            <li className="nav-item mw-100">
-                <a className="nav-link w-100 border-bottom  hvr-bounce-to-right text-white  text-center" href="#">Lịch chiếu phim</a>
-            </li>
-            <li className="nav-item mw-100">
-                <a className="nav-link w-100 border-bottom  hvr-bounce-to-right text-white  text-center" href="#">Vé đã đặt</a>
-            </li>
-            <li className="nav-item mw-100">
-                <Link className="nav-link w-100 border-bottom  hvr-bounce-to-right text-white  text-center" to="/pro">Thông tin cá nhân</Link>
-            </li>
-            <li className="nav-item mw-100">
-                <Link className="nav-link w-100 border-bottom  hvr-bounce-to-right text-white  text-center" to="/tp">Topping</Link>
-            </li>
+            
+
             {fm}
-            <li className="nav-item mw-100">
-                <Link className="nav-link w-100 border-bottom  hvr-bounce-to-right text-white  text-center" to="/dk">Đăng kí</Link>
-            </li>
+            
 
         </ul>
     );

@@ -4,11 +4,6 @@ import $ from 'jquery';
 function Profile() {
 
   let data = JSON.parse(getCookie("customer"));
-  $('#tenKH').val(data.tenKH);
-  $('#ten').val(data.ten);
-  $('#email').val(data.email);
-  $('#sdt').val(data.sdt);
-  console.log(data);
   
     return (  <div className="profilee ">
     <h3 className="text-center mt-5 font-weight-bold text-danger" >Thông Tin Khách Hàng</h3>
@@ -34,16 +29,16 @@ function Profile() {
           </div>
           <div className="hehe5">
             <div className="hehe4">
-              <input type="text" className="border-0 pt-1 w-100" id="tenKH" name="tenKH"placeholder="******" />
+              <input type="text" className="border-0 pt-1 w-100" value={data.tenKH} id="tenKH" name="tenKH"placeholder="******" />
             </div>
             <div className="mt-3">
-              <input type="text" className="border-0 pt-1 w-100" id="ten" name="ten" placeholder="******" />
+              <input type="text" className="border-0 pt-1 w-100" value={data.ten} id="ten" name="ten" placeholder="******" />
             </div>
             <div className="mt-2">
-              <input type="text" className="border-0 pt-1 w-100" id="email" name="email" placeholder="******" />
+              <input type="text" className="border-0 pt-1 w-100" id="email" value={data.email} name="email" placeholder="******" />
             </div>
             <div className="mt-2">
-              <input type="text" className="border-0 pt-1 w-100" id="sdt" name="sdt" placeholder="******" />
+              <input type="text" className="border-0 pt-1 w-100" value={data.sdt} id="sdt" name="sdt" placeholder="******" />
             </div>
             <div className="d-flex align-content-center" style={{marginTop: '14px'}}>
               <div className="form-check mr-3 align-content-center">
