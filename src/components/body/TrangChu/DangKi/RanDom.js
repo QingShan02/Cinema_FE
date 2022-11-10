@@ -6,7 +6,6 @@ import { data } from 'jquery';
 function RanDom() {
     const [code, setCode] = useState([]);
 
-    let email = sessionStorage.getItem('email');
     let allNumber = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
     useEffect(() => {
@@ -27,6 +26,7 @@ function RanDom() {
         }
     }
     const sendEmail = (e) => {
+        let email = sessionStorage.getItem('email');
         emailjs.send('service_76rhmqm', 'template_y7qq009', { to_email: email, message: code }, 'aYN1rK9I-975kaFc3', {
         })
             .then((result) => {
