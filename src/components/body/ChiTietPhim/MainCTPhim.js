@@ -10,7 +10,8 @@ useEffect(() => {
         left: 0,
         behavior: "smooth"
       });
-  }, [])
+  }, []);
+  console.log(data.state.maPhim);
     return ( <TieuDePhim maPhim={data.state.maPhim}/> );
 }
 

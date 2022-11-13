@@ -6,10 +6,14 @@ import { createBrowserRouter, BrowserRouter, Route, Link, NavLink, Routes } from
 import DangNhap from './components/DangNhap';
 import MainXN from './components/body/TrangChu/XacNhan/MainXN';
 import { createBrowserHistory } from 'history';
+import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
 function App() {
   const history = createBrowserHistory();
   return (
+
       <BrowserRouter basename='/RapChieuPhim_Web' history={history}>
+        
+
         <Routes>
           <Route path='*' exact element={<TrangChu />}></Route>
           <Route path='/signin' element={<DangNhap />}></Route>
