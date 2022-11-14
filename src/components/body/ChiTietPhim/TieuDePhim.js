@@ -3,7 +3,7 @@ import $ from 'jquery';
 import Collapse from './collapse';
 import { Link } from 'react-router-dom';
 import { getCookie } from 'react-use-cookie';
-
+import axios from 'axios';
 function TieuDePhim(props) {
     const [data, setData] = useState(props.maPhim);
     // console.log(data);
@@ -11,11 +11,12 @@ function TieuDePhim(props) {
     const [isHide, setIsHide] = useState(false);
     const [ngay, setNgay] = useState('');
     useEffect(() => {
+
         $.ajax({
             type: "get",
             async: false,
             url: "http://localhost:8484/api/phim/getMaPhim",
-            data: { maPhim: data },
+            data: { maPhim: data, ngay: '2022-11-13' },
             dataType: "json",
             success: function (response) {
                 response.listTheloai = Object.values(response.listTheloai).toString();
@@ -25,8 +26,11 @@ function TieuDePhim(props) {
                 //  console.log(Object.values(response.khunggio));
                 setData(response);
 
+            }, error: function (a) {
+                console.log(a);
             }
         });
+
         // console.log(isHide);
     }, []);
     const handleChange = (e) => {
@@ -48,15 +52,17 @@ function TieuDePhim(props) {
     const temp = a.map(s => {
         if (getCookie("customer") == '') {
             return <div key={s} className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                <Link className='btn btn-primary' onClick={(e)=>{if(!window.confirm("Vui lòng đăng nhập trước")){
-                    e.preventDefault();
-                }}} state={{path:window.location.pathname}} to='/signin'>{s}</Link><br></br>
+                <Link className='btn btn-primary' onClick={(e) => {
+                    if (!window.confirm("Vui lòng đăng nhập trước")) {
+                        e.preventDefault();
+                    }
+                }} state={{ path: window.location.pathname }} to='/signin'>{s}</Link><br></br>
             </div>
         } else {
             return <div key={s} className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                 <Link className='btn btn-primary' onClick={handleCheck} state={{
                     maPhim: data.maPhim,
-                    ngay: '2022-09-01',
+                    ngay: '2022-11-11',
                     gioBatDau: s
                 }} to={`/cn/${props.maPhim}`}>{s}</Link><br></br>
 

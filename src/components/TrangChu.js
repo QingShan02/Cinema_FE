@@ -9,7 +9,6 @@ import MainChoNgoi from './body/TrangChu/ChoNgoi/MainChoNgoi';
 import MainTP from './body/Topping/MainTP';
 import MainDk from './body/TrangChu/DangKi/MainDK';
 import MainXN from './body/TrangChu/XacNhan/MainXN';
-
 import MainThanhToan from './body/ThanhToan/MainThanhToan';
 import DangNhap from './DangNhap';
 function TrangChu() {
@@ -34,7 +33,7 @@ function TrangChu() {
             <Route path='/tp/*' element={<MainTP />}></Route>
             <Route path='/XacNhan' element={<MainXN />}></Route>
             <Route path='/thanhtoan/*' element={< MainThanhToan />}></Route>
-
+            <Route path='/pro/*' element={< MainKH />}></Route>
           </Routes>
 
         </div>
