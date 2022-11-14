@@ -27,6 +27,7 @@ function TieuDePhim(props) {
 
             }
         });
+        
         // console.log(isHide);
     }, []);
     const handleChange = (e) => {
