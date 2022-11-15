@@ -20,53 +20,45 @@ function Paypal({price, showSpinner, success }) {
             //  forceReRender={[30, currency, {"layout":"vertical"}]}
              fundingSource={undefined}
             createOrder={(data, actions) => {
-                return actions.order
-                    .create({
-                        intent: 'CAPTURE',
+                return actions.order.create({
+                        // intent: 'CAPTURE',
                         purchase_units: [
                             {
                                 amount: {
                                     currency_code: "USD",
-                                    value: price,
-                                    // breakdown: {
-                                    //     discount: {
-                                    //         currency_code: "USD",
-                                    //         value: 5
-                                    //     }
-                                    // }
+                                    value: price
                                 },
-                                description: 'xxxxxxxxxxx',
-                                shipping: {
-                                    options: [
-                                        {
-                                            id: "SHIP_123",
-                                            label: "Free Shipping",
-                                            type: "SHIPPING",
-                                            selected: true,
-                                            amount: {
-                                                value: "3.00",
-                                                currency_code: "USD"
-                                            }
-                                        },
-                                        {
-                                            id: "SHIP_456",
-                                            label: "Pick up in Store",
-                                            type: "PICKUP",
-                                            selected: false,
-                                            amount: {
-                                                value: "0.00",
-                                                currency_code: "USD"
-                                            }
-                                        }
-                                    ]
-                                }
+                                description: 'xxxxxxxxxxx'
+                                // shipping: {
+                                //     options: [
+                                //         {
+                                //             id: "SHIP_123",
+                                //             label: "Free Shipping",
+                                //             type: "SHIPPING",
+                                //             selected: true,
+                                //             amount: {
+                                //                 value: "3.00",
+                                //                 currency_code: "USD"
+                                //             }
+                                //         },
+                                //         {
+                                //             id: "SHIP_456",
+                                //             label: "Pick up in Store",
+                                //             type: "PICKUP",
+                                //             selected: false,
+                                //             amount: {
+                                //                 value: "0.00",
+                                //                 currency_code: "USD"
+                                //             }
+                                //         }
+                                //     ]
+                                // }
                             },
                         ],
 
                     })
                     .then((orderId) => {
                         console.log(orderId);
-                        // Your code here after create the order
                         return orderId;
                     })
             }}
@@ -76,9 +68,7 @@ function Paypal({price, showSpinner, success }) {
                     if(orderData.status === "COMPLETED"){
                         success();
                     }
-                    console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
-                    var transaction = orderData.purchase_units[0].payments.captures[0];
-                    alert('Transaction '+ transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');                });
+                });
             }}/>
     </td>
     );

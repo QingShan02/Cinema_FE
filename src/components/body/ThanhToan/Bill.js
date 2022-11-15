@@ -4,7 +4,7 @@ import { getCookie } from 'react-use-cookie';
 import { Link } from 'react-router-dom';
 import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 import Paypal from './Paypal';
-import QRCode from 'react-qr-code';
+import QRCodeCanvas from 'qrcode.react';
 
 function Bill() {
     let data = JSON.parse(sessionStorage.getItem("ghe"));
@@ -35,6 +35,25 @@ function Bill() {
     } else {
         temp = { tongGiaVe: data.gia * 1.05, thueVat: 0.05, maCTGhe: data.maCTGhe, maKH: cookie.maKH };
     }
+    const UnHideNofi = () => {
+        document.getElementById('exampleModal').style.display = "block";
+        document.getElementById('exampleModal').style.opacity = 1;
+    }
+    const HideNofi = () => {
+        document.getElementById('exampleModal').style.display = "none";
+        document.getElementById('exampleModal').style.opacity = 0;
+    }
+    const downloadQR = () => {
+        const canvas = document.getElementById('qrcode');
+        const pngUrl = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream');
+        console.log('pngUrl', pngUrl);
+        let downloadLink = document.createElement('a');
+        downloadLink.href = pngUrl;
+        downloadLink.download = 'viblo-tranchien.png';
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+      };
     const handleClick = () => {
         $.ajax({
             type: "get",
@@ -65,7 +84,8 @@ function Bill() {
                 }
             });
         }
-
+        UnHideNofi();
+        downloadQR();
     }
     return (
         <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -117,31 +137,29 @@ function Bill() {
                     <tr>
                         <PayPalScriptProvider options={{ "client-id": "Ad4Ki-0dqrtzbR0jCy66s3qI_8w6KF6oqtE8wxWGmduyGoRdop-pqBItlI69J1zcvQVJM6Mi8kF2kY6f" }}>
                             <Paypal price={((data.gia * 1.05 + giatp) / 24815).toFixed(2)}
-                                showSpinner={true} success={handleClick} data-bs-toggle="modal" data-bs-target="#exampleModal" />
+                                showSpinner={true} success={handleClick} down={downloadQR} data-bs-toggle="modal" data-bs-target="#exampleModal" />
                         </PayPalScriptProvider>
                     </tr>
                 </tfoot>
             </table>
             <div>
-                <button type="button" className="btn btn-primary" onClick={() => {
-                    document.getElementById('exampleModal').style.display = "block";
-                    document.getElementById('exampleModal').style.opacity = 1;
-                }} data-bs-toggle="modal" data-bs-target="#exampleModal">
+                {/* <button type="button" className="btn btn-primary" onClick={UnHideNofi} data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Launch demo modal
-                </button>
+                </button> */}
                 <div className="modal fade" id="exampleModal" tabIndex={999} aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div className="modal-dialog" id="hehe">
+                    <div className="modal-dialog" id="hehe" style={{ height: "auto", maxWidth: 1000, width: "100%" }}>
                         <div className="modal-content">
                             <div className="modal-header">
-                                <h1 className="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
+                                <h1 className="modal-title fs-5" id="exampleModalLabel">Hóa đơn</h1>
+                                <button type="button" onClick={HideNofi} className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
                             </div>
                             <div className="modal-body">
                                 <div style={{ height: "auto", margin: "0 auto", maxWidth: 64, width: "100%" }}>
-                                    <QRCode
+                                    <QRCodeCanvas
                                         size={256}
+                                        id="qrcode"
                                         style={{ height: "auto", maxWidth: "100%", width: "100%" }}
-                                        value="http://google.com"
+                                        value="https://www.google.com"
                                         viewBox={`0 0 256 256`}
                                     />
                                 </div>
@@ -184,10 +202,7 @@ function Bill() {
                                         </tr></tfoot></table>
                             </div>
                             <div className="modal-footer">
-                                <button type="button" onClick={() => {
-                                    document.getElementById('exampleModal').style.display = "none";
-                                    document.getElementById('exampleModal').style.opacity = 0;
-                                }} className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" onClick={HideNofi} className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 {/* <button type="button" className="btn btn-primary">Save changes</button> */}
                             </div>
                         </div>
