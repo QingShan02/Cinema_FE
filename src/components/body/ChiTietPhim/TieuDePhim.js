@@ -3,7 +3,6 @@ import $ from 'jquery';
 import Collapse from './collapse';
 import { Link } from 'react-router-dom';
 import { getCookie } from 'react-use-cookie';
-import axios from 'axios';
 function TieuDePhim(props) {
     const [data, setData] = useState(props.maPhim);
     // console.log(data);
@@ -16,11 +15,12 @@ function TieuDePhim(props) {
             type: "get",
             async: false,
             url: "http://localhost:8484/api/phim/getMaPhim",
-            data: { maPhim: data, ngay: '2022-11-13' },
+            data: { maPhim: data,ngay:'2022-11-13' },
             dataType: "json",
             success: function (response) {
                 response.listTheloai = Object.values(response.listTheloai).toString();
                 response.traller = response.traller.replace("watch?v=", "embed/");
+                console.log(response.khunggio);
                 setA(response.khunggio);
                 // console.log(response);
                 //  console.log(Object.values(response.khunggio));
@@ -62,7 +62,7 @@ function TieuDePhim(props) {
             return <div key={s} className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                 <Link className='btn btn-primary' onClick={handleCheck} state={{
                     maPhim: data.maPhim,
-                    ngay: '2022-11-11',
+                    ngay: '2022-11-13',
                     gioBatDau: s
                 }} to={`/cn/${props.maPhim}`}>{s}</Link><br></br>
 

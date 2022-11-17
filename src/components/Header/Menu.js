@@ -60,7 +60,7 @@ function Menu() {
             <li className='nav-item mw-100 '>
                 <a className="navbar-brand mt-2 mt-lg-0" href="#">
                     <img
-                        src="https://play-lh.googleusercontent.com/0oH3J4rY4gf5pILGT_zNMRkdj78UK5lwrP9AxC3_wJ_goNEHmZlAwxAX3JS-7wEUuo8=w240-h480-rw"
+                        src={process.env.PUBLIC_URL + `/minh.png`}
                         //  height="100" 
                         className='img-fluid w-100 d-block pb-10'
                         alt="MDB Logo"
