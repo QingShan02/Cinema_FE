@@ -19,7 +19,7 @@ function DangNhap() {
 
   const handleSubmit = (event) => {
     // event.preventDefault();
-    console.log(event);
+    console.log(inputs);
     //event.preventDefault();
     $.ajax({
       type: "GET",
@@ -28,6 +28,7 @@ function DangNhap() {
       dataType: "json",
       async: false,
       success: function (response, data, setuo) {
+        console.log(response);
         setCookie(JSON.stringify(response), {
           days: 2,
           SameSite: 'Strict',
