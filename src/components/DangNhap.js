@@ -14,7 +14,13 @@ function DangNhap() {
   let history = useNavigate();
 
   const handleSubmit = (event) => {
+<<<<<<< HEAD
     console.log(event);
+=======
+    // event.preventDefault();
+    console.log(inputs);
+    //event.preventDefault();
+>>>>>>> origin/master
     $.ajax({
       type: "GET",
       url: "http://localhost:8484/api/kh/findKH",
@@ -22,6 +28,7 @@ function DangNhap() {
       dataType: "json",
       async: false,
       success: function (response, data, setuo) {
+        console.log(response);
         setCookie(JSON.stringify(response), {
           days: 2,
           SameSite: 'Strict',
