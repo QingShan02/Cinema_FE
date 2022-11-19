@@ -10,7 +10,12 @@ import MainTP from './body/Topping/MainTP';
 import MainDk from './body/TrangChu/DangKi/MainDK';
 import MainXN from './body/TrangChu/XacNhan/MainXN';
 import MainThanhToan from './body/ThanhToan/MainThanhToan';
+import MainTimKiem from './body/TrangChu/TimKiem/MainTimKiem';
+import MainHC from './body/TrangChu/HeaderContainer/MainHC';
+import Banner from './body/TrangChu/Banner/MainBanner';
 import DangNhap from './DangNhap';
+import Carousel from 'react-bootstrap/Carousel';
+import MainBanner from './body/TrangChu/Banner/MainBanner';
 function TrangChu() {
 
 
@@ -24,6 +29,11 @@ function TrangChu() {
         </div>
 
         <div className="col-xs-10 col-sm-9 col-md-10 col-lg-10 bg-dark p-0">
+          
+          <MainTimKiem />
+          <MainHC />
+          <MainBanner />
+          
           <Routes>
             <Route path='/' exact element={<TrangChuComponent />}></Route>
             <Route path='/pro' element={<MainKH />}></Route>
@@ -39,6 +49,10 @@ function TrangChu() {
         </div>
 
       </div>
+
+
+
+
 
 
       <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
