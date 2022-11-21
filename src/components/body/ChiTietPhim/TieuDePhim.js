@@ -20,7 +20,11 @@ function TieuDePhim(props) {
             type: "get",
             async: false,
             url: "http://localhost:8484/api/phim/getMaPhim",
+
             data: { maPhim: data, ngay: '2022-11-18' },
+
+            data: { maPhim: data,ngay:'2022-11-18' },
+
             dataType: "json",
             success: function (response) {
                 response.listTheloai = Object.values(response.listTheloai).toString();
@@ -51,6 +55,9 @@ function TieuDePhim(props) {
             maPhim: data.maPhim,
             tenPhim: data.tenPhim,
             ngay: '2022-11-16',
+
+            ngay: '2022-11-18',
+
             gioBatDau: e.target.text
         }));
     }
@@ -66,8 +73,11 @@ function TieuDePhim(props) {
         } else {
             return <div key={s} className="col-xs-6 col-sm-6 col-md-6 col-lg-6"  style={{ padding: '15px 20px' }}>
                 <Link className='btn btn-primary' onClick={handleCheck} state={{
-                    maPhim: data.maPhim,
+
                     ngay: '2022-11-16',
+
+                    ngay: '2022-11-18',
+
                     gioBatDau: s
                 }} to={`/cn/${props.maPhim}`}>{s}</Link><br></br>
 
