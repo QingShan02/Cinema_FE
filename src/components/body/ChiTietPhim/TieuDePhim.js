@@ -21,7 +21,6 @@ function TieuDePhim(props) {
             async: false,
             url: "http://localhost:8484/api/phim/getMaPhim",
 
-            data: { maPhim: data, ngay: '2022-11-18' },
 
             data: { maPhim: data,ngay:'2022-11-18' },
 
@@ -54,7 +53,6 @@ function TieuDePhim(props) {
         sessionStorage.setItem("xuatchieu", JSON.stringify({
             maPhim: data.maPhim,
             tenPhim: data.tenPhim,
-            ngay: '2022-11-16',
 
             ngay: '2022-11-18',
 
@@ -73,8 +71,6 @@ function TieuDePhim(props) {
         } else {
             return <div key={s} className="col-xs-6 col-sm-6 col-md-6 col-lg-6"  style={{ padding: '15px 20px' }}>
                 <Link className='btn btn-primary' onClick={handleCheck} state={{
-
-                    ngay: '2022-11-16',
 
                     ngay: '2022-11-18',
 
