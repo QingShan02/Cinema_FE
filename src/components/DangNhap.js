@@ -14,13 +14,8 @@ function DangNhap() {
   let history = useNavigate();
 
   const handleSubmit = (event) => {
-<<<<<<< HEAD
-    console.log(event);
-=======
-    // event.preventDefault();
-    console.log(inputs);
+
     //event.preventDefault();
->>>>>>> origin/master
     $.ajax({
       type: "GET",
       url: "http://localhost:8484/api/kh/findKH",
