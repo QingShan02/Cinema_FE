@@ -28,7 +28,7 @@ function LichChieu() {
                 <div style={{fontSize:20}} className="tenchinhanh">{s.tenCN}</div>
                 <div className="tt">
                     <label htmlFor="">2D - Phụ đề</label>
-                    <div style={{ marginLeft: 50 }}>
+                    <div id='khoibtn' style={{ marginLeft: 50 }}>
                         <button  type="button" className="btn btn-outline-success">13:00</button>
                         <button  type="button" className="btn btn-outline-success">14:00</button>
                         <button  type="button" className="btn btn-outline-success">15:00</button>

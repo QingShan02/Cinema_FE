@@ -11,6 +11,9 @@ border: 1px solid;
 background-color: white;
 padding: 80px 60px;
 }
-.tt>*{
+.ytt>*{
 display: inline-block;
+}
+#khoibtn>*{
+    margin-left: 30px;
 }
