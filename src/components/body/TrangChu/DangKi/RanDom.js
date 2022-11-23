@@ -35,18 +35,18 @@ function RanDom() {
                 console.log(error.text);
             });
     };
-    return (
-        <div className="row" >
+    // return (
+    //     <div className="row" >
 
-            <div>
-                <div className="my-2 col-auto">
-                    <input type="checkbox" /><span className="mx-2">Tôi đồng ý với các điều khoản của CGV</span>
-                </div>
-                <Link type="button" className="btn btn-danger px-5 fw-bold mb-2" onClick={sendEmail} to='/XacNhan' state={{ code }}>Đăng Kí</Link>
-            </div>
-        </div >
+    //         <div>
+    //             <div className="my-2 col-auto">
+    //                 <input type="checkbox" /><span className="mx-2">Tôi đồng ý với các điều khoản của CGV</span>
+    //             </div>
+    //             <Link type="button" className="btn btn-danger px-5 fw-bold mb-2" onClick={sendEmail} to='/XacNhan' state={{ code }}>Đăng Kí</Link>
+    //         </div>
+    //     </div >
 
-    );
+    // );
 }
 
 export default RanDom;

@@ -15,7 +15,10 @@ function DangNhap() {
 
   const handleSubmit = (event) => {
 
+<<<<<<< HEAD
     //event.preventDefault();
+=======
+>>>>>>> 00dcc5132a8b8a2d5b19d1115f5a436d745aee8c
     $.ajax({
       type: "GET",
       url: "http://localhost:8484/api/kh/findKH",
