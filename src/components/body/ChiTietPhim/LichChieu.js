@@ -2,8 +2,8 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import $ from 'jquery';
 import './lichchieu.css';
-
-function LichChieu() {
+import KhungGio from './KhungGio';
+function LichChieu({maPhim}) {
     const [data, setData] = useState([]);
    
 
@@ -25,18 +25,8 @@ function LichChieu() {
     const b = data.map((s) => {
         // console.log(s.maCN);
         return   <div key={s.maCN} className="name">
-                <div style={{fontSize:20}} className="tenchinhanh">{s.tenCN}</div>
-                <div className="tt">
-                    <label htmlFor="">2D - Phụ đề</label>
-                    <div id='khoibtn' style={{ marginLeft: 50 }}>
-                        <button  type="button" className="btn btn-outline-success">13:00</button>
-                        <button  type="button" className="btn btn-outline-success">14:00</button>
-                        <button  type="button" className="btn btn-outline-success">15:00</button>
-                        <button  type="button" className="btn btn-outline-success">16:00</button>
-                        <button  type="button" className="btn btn-outline-success">17:00</button>
-
-                    </div>
-                </div>
+                <div style={{fontSize:20,textAlign:'center'}} className="tenchinhanh">{s.tenCN}</div>
+                <KhungGio maCN={s.maCN} maPhim = {maPhim} />
         </div>
 
     });

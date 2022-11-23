@@ -91,7 +91,7 @@ function TieuDePhim(props) {
         nd1 = <iframe className='w-75 pt-10 d-block mx-auto ' style={{ padding: '25px 50px' }} height={350} src={data.traller} ></iframe>
     } else if (isShow === 3) {
         nd1 =<div>
-        <LichChieu />
+        <LichChieu maPhim = {data.maPhim} />
 
         </div> 
     }

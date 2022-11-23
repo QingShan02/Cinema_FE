@@ -9,11 +9,11 @@ width: 200px;
 .tt{
 border: 1px solid;
 background-color: white;
-padding: 80px 60px;
+padding: 60px 40px;
 }
-.ytt>*{
+.tt>*{
 display: inline-block;
 }
-#khoibtn>*{
-    margin-left: 30px;
+.khoibtn>*{
+    margin-left: 20px;
 }
