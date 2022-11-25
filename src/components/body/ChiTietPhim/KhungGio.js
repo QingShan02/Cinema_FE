@@ -21,7 +21,7 @@ function KhungGio({maCN, maPhim}) {
     }, []);
 
     const a = data.map((s) => {
-         return  <button type="button" className="btn btn-outline-success">{s.gioBatDau}</button>
+         return  <button type="button" key={s.stt}className="btn btn-outline-success">{s.gioBatDau}</button>
     });
 
     return (
