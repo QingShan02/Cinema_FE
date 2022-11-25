@@ -27,7 +27,7 @@ const ChuyenDe = (props) => {
     const a = data.map((s) => {
         return <div key={s.maPhim} className='col-xs-3 col-sm-6 col-md-3 col-lg-3 mb-2 shadow-sm'>
             <div className="card" >
-                <img className="card-img-top " src={process.env.PUBLIC_URL + `/image/poster/${s.hinh}`} height="300" alt="Card image cap" />
+                <img className="card-img-top " src={`http://localhost:8484/Image/poster/${s.hinh}`} height="300" alt="Card image cap" />
                 <div className="card-body " >
                     <h5 className="card-title">{s.tenPhim}</h5>
                     <p className="card-text">{s.thoiLuong}</p>

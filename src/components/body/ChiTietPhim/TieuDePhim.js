@@ -99,7 +99,7 @@ function TieuDePhim(props) {
         <div className="container bg-white " style={{ padding: '25px 50px' }}>
             <div className="row">
                 <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                    <img src={process.env.PUBLIC_URL + `/image/poster/${data.hinh}`} className="float-start" width={204} height={300} />
+                    <img src={`http://localhost:8484/Image/poster/${data.hinh}`}  className="float-start" width={204} height={300} />
                 </div>
                 <div className="col-xs-9 col-sm-9 col-md-9 col-lg-9">
                     <h2 style={{ color: "red" }}>{data.tenPhim}</h2>
