@@ -12,7 +12,7 @@ function Bill() {
     let data2 = JSON.parse(sessionStorage.getItem("topping"));
     const [idve1, setIdve] = useState("");
     console.log(data2);
-    const cookie = JSON.parse(getCookie("customer"));
+    // const cookie = JSON.parse(getCookie("customer"));
     let tp = null;
     let giatp = 0;
     if (data2 !== null) {
@@ -31,9 +31,9 @@ function Bill() {
 
     let temp = '';
     if (data2 != null) {
-        temp = { tongGiaVe: data.gia * 1.05 + giatp, thueVat: 0.05, maCTGhe: data.maCTGhe, maKH: cookie.maKH };
+        temp = { giaVe: data.gia * 1.05 + giatp, thueVat: 0.05, maCTGhe: data.maCTGhe, maKH: 1,stt_xc: data1.stt_xc };
     } else {
-        temp = { tongGiaVe: data.gia * 1.05, thueVat: 0.05, maCTGhe: data.maCTGhe, maKH: cookie.maKH };
+        temp = { giaVe: data.gia * 1.05, thueVat: 0.05, maCTGhe: data.maCTGhe, maKH: 1,stt_xc:data1.stt_xc };
     }
     const UnHideNofi = () => {
         document.getElementById('exampleModal').style.display = "block";
@@ -159,7 +159,7 @@ function Bill() {
                                         size={256}
                                         id="qrcode"
                                         style={{ height: "auto", maxWidth: "100%", width: "100%" }}
-                                        value="https://www.google.com"
+                                        value={`http://192.168.1.15:3000/RapChieuPhim_Web/qrCodeVe/${idve1}`}
                                         viewBox={`0 0 256 256`}
                                     />
                                 </div>

@@ -5,6 +5,7 @@ import Ghe from './Ghe';
 import HangGhe from './HangGhe';
 import TieuDePhong from './TieuDePhong';
 import { Link, useLocation } from 'react-router-dom';
+import MainGhe from './MainGhe';
 
 // import { useEffect } from "react";
 function MainChoNgoi() {
@@ -29,7 +30,7 @@ function MainChoNgoi() {
             <div className='container'>
                 <div className='row'>
                     <HangGhe />
-                    <Ghe obj={data.state} />
+                    <MainGhe obj={data.state} />
                     <ChuThich />
                     <Link className="btn btn-primary" onClick={handleClick} to="/tp">Tiếp theo</Link>
                 </div>

@@ -7,6 +7,7 @@ import DangNhap from './components/DangNhap';
 import MainXN from './components/body/TrangChu/XacNhan/MainXN';
 import { createBrowserHistory } from 'history';
 import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
+import HoaDon from './components/HoaDon';
 function App() {
   const history = createBrowserHistory();
   return (
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route path='*' exact element={<TrangChu />}></Route>
           <Route path='/signin' element={<DangNhap />}></Route>
+          <Route path='/qrCodeVe/*' element={<HoaDon />}></Route>
 
 
       </Routes>
