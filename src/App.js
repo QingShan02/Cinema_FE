@@ -7,21 +7,23 @@ import DangNhap from './components/DangNhap';
 import MainXN from './components/body/TrangChu/XacNhan/MainXN';
 import { createBrowserHistory } from 'history';
 import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
+import HoaDon from './components/HoaDon';
+import AppProvider from './Context/AppProvider';
 function App() {
   const history = createBrowserHistory();
   return (
-
+<AppProvider>
       <BrowserRouter basename='/RapChieuPhim_Web' history={history}>
-        
 
         <Routes>
           <Route path='*' exact element={<TrangChu />}></Route>
           <Route path='/signin' element={<DangNhap />}></Route>
+          <Route path='/qrCodeVe/*' element={<HoaDon />}></Route>
 
 
       </Routes>
-
     </BrowserRouter>
+    </AppProvider>
   );
 }
 

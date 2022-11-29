@@ -30,9 +30,7 @@ function TrangChu() {
 
         <div className="col-xs-10 col-sm-9 col-md-10 col-lg-10 bg-dark p-0">
           
-          <MainTimKiem />
-          <MainHC />
-          <MainBanner />
+
           
           <Routes>
             <Route path='/' exact element={<TrangChuComponent />}></Route>
