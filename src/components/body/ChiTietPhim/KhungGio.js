@@ -6,7 +6,6 @@ import { stringify } from 'qs';
 function KhungGio({maCN, maPhim}) {
     const [data, setData] = useState([]);
     let temp = JSON.parse(sessionStorage.getItem("xuatchieu"));
-    // console.log(temp);
     useEffect(() => {
         $.ajax({
             type: "get",

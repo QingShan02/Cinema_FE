@@ -31,9 +31,9 @@ function Bill() {
 
     let temp = '';
     if (data2 != null) {
-        temp = { giaVe: data.gia * 1.05 + giatp, thueVat: 0.05, maCTGhe: data.maCTGhe, maKH: 1,stt_xc: data1.stt_xc };
+        temp = { giaVe: data.gia * 1.05 + giatp, thueVat: 0.05, maCTGhe: data.maCTGhe, maKH: 1, stt_xc: data1.stt_xc };
     } else {
-        temp = { giaVe: data.gia * 1.05, thueVat: 0.05, maCTGhe: data.maCTGhe, maKH: 1,stt_xc:data1.stt_xc };
+        temp = { giaVe: data.gia * 1.05, thueVat: 0.05, maCTGhe: data.maCTGhe, maKH: 1, stt_xc: data1.stt_xc };
     }
     const UnHideNofi = () => {
         document.getElementById('exampleModal').style.display = "block";
@@ -45,16 +45,30 @@ function Bill() {
     }
     const downloadQR = () => {
         const canvas = document.getElementById('qrcode');
-        const pngUrl = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream');
-        console.log('pngUrl', pngUrl);
-        let downloadLink = document.createElement('a');
-        downloadLink.href = pngUrl;
-        downloadLink.download = 'viblo-tranchien.png';
-        document.body.appendChild(downloadLink);
-        downloadLink.click();
-        document.body.removeChild(downloadLink);
-      };
-    const handleClick = () => {
+        let url = canvas.toDataURL();
+        var blobBin = atob(url.split(',')[1]);
+        var array = [];
+        for (var i = 0; i < blobBin.length; i++) {
+            array.push(blobBin.charCodeAt(i));
+        }
+        var file = new Blob([new Uint8Array(array)], { type: 'image/png' });
+
+        console.log(file);
+        var formdata = new FormData();
+        formdata.append("file", file);
+        console.log(formdata);
+        $.ajax({
+            url: "http://localhost:8484/upload",
+            type: "POST",
+            data: formdata,
+            processData: false,
+            contentType: false,
+        }).done(function (respond) {
+            alert(respond);
+        });
+    };
+    const handleClick = (e) => {
+        // e.preventDefault();
         $.ajax({
             type: "get",
             url: "http://localhost:8484/api/ve/insertVe",
@@ -159,7 +173,7 @@ function Bill() {
                                         size={256}
                                         id="qrcode"
                                         style={{ height: "auto", maxWidth: "100%", width: "100%" }}
-                                        value={`http://192.168.1.15:3000/RapChieuPhim_Web/qrCodeVe/${idve1}`}
+                                        value={`http://192.168.106.18:3000/RapChieuPhim_Web/qrCodeVe/${idve1}`}
                                         viewBox={`0 0 256 256`}
                                     />
                                 </div>

@@ -37,7 +37,7 @@ const ChuyenDe = (props) => {
                     <Link to={`/ctphim/${s.maPhim}`}
                         state={{
                             maPhim: s.maPhim
-                        }} onClick={()=>{sessionStorage.setItem("xuatchieu",JSON.stringify({maPhim:s.maPhim,tenPhim:s.tenPhim}))}}className="btn d-block btn-primary">Xem chi tiết</Link>
+                        }} onClick={() => { sessionStorage.setItem("xuatchieu", JSON.stringify({ maPhim: s.maPhim, tenPhim: s.tenPhim })) }} className="btn d-block btn-primary">Xem chi tiết</Link>
                 </div>
             </div>
         </div>
@@ -51,9 +51,9 @@ const ChuyenDe = (props) => {
         <hr style={{ backgroundColor: "red", height: 20, border: "none" }} />
         <div className="panel-body">
             <div className="row">
-            <MainTimKiem />
-          <MainHC />
-          <MainBanner />
+                <MainTimKiem />
+                <MainHC />
+                <MainBanner />
                 {/* <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3"> */}
                 {a}
                 {/* </div> */}
