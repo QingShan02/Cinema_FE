@@ -1,0 +1,17 @@
+.MainKH {
+    background: url('./background_KH.jpg');
+}
+
+span {
+    color: blue;
+    font-weight: bold;
+}
+
+.a {
+    font-size: larger;
+}
+
+.text{
+    width: 175px;
+    margin-left: 10px;
+}

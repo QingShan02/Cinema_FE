@@ -16,10 +16,10 @@ function Lichsuphim() {
       }
     });
   }, []);
-  let lc = data.map((s) => <Card ngay={s.ngay} tenphim={s.tenPhim} />)
+  let lc = data.map((s) => <Card ngay={s.ngay} tenphim={s.tenPhim} giobatdau={s.giobatdau} idve={s.idVe} giaVe={s.giaVe} />)
   return (<div className="mt-5 px-5 mx-auto w-50 ">
     <h3>Lịch sử xem phim</h3>
-    <hr style={{ width: '150px', height: '2px', backgroundColor: 'red', marginLeft: 0, marginTop: '-2px' }} />
+    <hr style={{ width: '220px', height: '5px', backgroundColor: '#0066FF', color: '#EE0000', marginLeft: 0, marginTop: '-2px' }} />
     {/* <div className="mt-4">
       <div className="d-flex align-content-center justify-content-between pb-3" style={{ borderBottom: '1px solid #BC5014' }}>
         <div className="d-flex align-content-center">

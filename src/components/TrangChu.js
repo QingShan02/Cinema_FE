@@ -16,6 +16,7 @@ import Banner from './body/TrangChu/Banner/MainBanner';
 import DangNhap from './DangNhap';
 import Carousel from 'react-bootstrap/Carousel';
 import MainBanner from './body/TrangChu/Banner/MainBanner';
+import MainLC from './body/TrangChu/LichChieu/MainLC';
 function TrangChu() {
 
 
@@ -29,9 +30,9 @@ function TrangChu() {
         </div>
 
         <div className="col-xs-10 col-sm-9 col-md-10 col-lg-10 bg-dark p-0">
-          
 
-          
+
+
           <Routes>
             <Route path='/' exact element={<TrangChuComponent />}></Route>
             <Route path='/pro' element={<MainKH />}></Route>
@@ -42,6 +43,7 @@ function TrangChu() {
             <Route path='/XacNhan' element={<MainXN />}></Route>
             <Route path='/thanhtoan/*' element={< MainThanhToan />}></Route>
             <Route path='/pro/*' element={< MainKH />}></Route>
+            <Route path='/lc/*' element={< MainLC />}></Route>
           </Routes>
 
         </div>
