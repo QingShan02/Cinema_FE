@@ -5,7 +5,7 @@ import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 function MainBanner() {
     return (
-        <Carousel fade>
+        <Carousel fade style={{ margin: '10px 0px' }}>
             <Carousel.Item>
                 <img src="https://images5.alphacoders.com/115/1150292.jpg" className="d-block w-100" alt="" width={1550} height={500} />
             </Carousel.Item>
