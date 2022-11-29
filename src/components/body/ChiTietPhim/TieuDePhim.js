@@ -55,27 +55,25 @@ function TieuDePhim(props) {
             gioBatDau: e.target.text
         }));
     }
-    // const temp = a.map(s => {
-    //     if (getCookie("customer") == '') {
-    //         return <div key={s} className="col-xs-6 col-sm-6 col-md-6 col-lg-6" style={{ padding: '15px 20px' }} >
-    //             <Link className='btn btn-primary' onClick={(e) => {
-    //                 if (!window.confirm("Vui lòng đăng nhập trước")) {
-    //                     e.preventDefault();
-    //                 }
-    //             }} state={{ path: window.location.pathname }} to='/signin'>{s}</Link><br></br>
-    //         </div>
-    //     } else {
-    //         return <div key={s} className="col-xs-6 col-sm-6 col-md-6 col-lg-6" style={{ padding: '15px 20px' }}>
-    //             <Link className='btn btn-primary' onClick={handleCheck} state={{
+    const temp = a.map(s => {
+        if (getCookie("customer") == '') {
+            return <div key={s} className="col-xs-6 col-sm-6 col-md-6 col-lg-6" >
+                <Link className='btn btn-primary' onClick={(e) => {
+                    if (!window.confirm("Vui lòng đăng nhập trước")) {
+                        e.preventDefault();
+                    }
+                }} state={{ path: window.location.pathname }} to='/signin'>{s}</Link><br></br>
+            </div>
+        } else {
+            return <div key={s} className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <Link className='btn btn-primary' onClick={handleCheck} state={{
+                    ngay: '2022-11-22',
+                    gioBatDau: s
+                }} to={`/cn/${props.maPhim}`}>{s}</Link><br></br>
 
-    //                 ngay: '2022-11-22',
-
-    //                 gioBatDau: s
-    //             }} to={`/cn/${props.maPhim}`}>{s}</Link><br></br>
-
-    //         </div>
-    //     }
-    // })
+            </div>
+        }
+    })
     // let nd = null;
     // if (!isHide) {
     //     nd = (<div className="row mt-10" style={{ height: 350 }} >
@@ -99,7 +97,7 @@ function TieuDePhim(props) {
         <div className="container bg-white " style={{ padding: '25px 50px' }}>
             <div className="row">
                 <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                    <img src={process.env.PUBLIC_URL + `/image/poster/${data.hinh}`} className="float-start" width={204} height={300} />
+                    <img src={`http://localhost:8484/Image/poster/${data.hinh}`}  className="float-start" width={204} height={300} />
                 </div>
                 <div className="col-xs-9 col-sm-9 col-md-9 col-lg-9">
                     <h2 style={{ color: "red" }}>{data.tenPhim}</h2>

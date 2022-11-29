@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import $ from 'jquery';
-
 function KhungGio({maCN, maPhim}) {
     const [data, setData] = useState([]);
 
@@ -19,9 +18,11 @@ function KhungGio({maCN, maPhim}) {
             }
         });
     }, []);
-
+   
     const a = data.map((s) => {
-         return  <button type="button" className="btn btn-outline-dark">{s.gioBatDau}</button>
+        //  return  <button type="button" className="btn btn-outline-dark">{s.gioBatDau}</button>
+         return  <button type="button" key={s.stt}className="btn btn-outline-dark" >{s.gioBatDau}</button>
+     
     });
 
     return (
@@ -31,7 +32,9 @@ function KhungGio({maCN, maPhim}) {
                 {a}
             </div>
         </div>
+        
     );
 }
+
 
 export default KhungGio;

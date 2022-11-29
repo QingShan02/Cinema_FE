@@ -1,0 +1,9 @@
+GET http://localhost:8484/api/phim/getAllPhim
+###
+GET  http://localhost:8484/api/ngay/getGioBatDau HTTP/1.1
+content-type: application/json
+
+{
+    "maCN": "cn1",
+    "maPhim": "MP01"
+}
