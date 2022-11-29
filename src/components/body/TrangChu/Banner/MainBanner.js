@@ -7,13 +7,13 @@ function MainBanner() {
     return (
         <Carousel fade style={{ margin: '10px 0px' }}>
             <Carousel.Item>
-                <img src="https://images5.alphacoders.com/115/1150292.jpg" className="d-block w-100" alt="" width={1550} height={500} />
+                <img src="https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/t/r/tro_t_n_r_c_r__980wx448h.jpg" className="d-block w-100" alt="" width={1550} height={500} />
             </Carousel.Item>
             <Carousel.Item>
-                <img src="https://i.pinimg.com/originals/81/bd/f0/81bdf036773c7bc12d2155b65a0a3b54.jpg" className="d-block w-100" alt="" width={1550} height={500} />
+                <img src="https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/9/8/980_x_448__10.jpg" className="d-block w-100" alt="" width={1550} height={500} />
             </Carousel.Item>
             <Carousel.Item>
-                <img src="https://wallpapercave.com/wp/wp7037716.png" className="d-block w-100" alt="" width={1550} height={500} />
+                <img src="https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/r/o/rolling_banner_980wx448h_1_1.jpg" className="d-block w-100" alt="" width={1550} height={500} />
             </Carousel.Item>
         </Carousel>
     );

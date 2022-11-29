@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import $ from 'jquery';
 import Collapse from './collapse';
 import { Link } from 'react-router-dom';
 import { getCookie } from 'react-use-cookie';
 import LichChieu from './LichChieu';
+import { AppContext } from '../../../Context/AppProvider';
 function TieuDePhim(props) {
     const [data, setData] = useState(props.maPhim);
     // console.log(data);
@@ -12,7 +13,7 @@ function TieuDePhim(props) {
     const [ngay, setNgay] = useState('');
     const [isShow, setIsShow] = useState(1);
     let nd1 = null;
-
+    const Server = useContext(AppContext);
 
 
     useEffect(() => {
@@ -20,7 +21,7 @@ function TieuDePhim(props) {
         $.ajax({
             type: "get",
             async: false,
-            url: "http://localhost:8484/api/phim/getMaPhim",
+            url: `http://${Server.data.ip}:8484/api/phim/getMaPhim`,
             data: { maPhim: data, ngay: '2022-11-22' },
             dataType: "json",
             success: function (response) {
@@ -97,7 +98,7 @@ function TieuDePhim(props) {
         <div className="container bg-white " style={{ padding: '25px 50px' }}>
             <div className="row">
                 <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                    <img src={`http://localhost:8484/Image/poster/${data.hinh}`}  className="float-start" width={204} height={300} />
+                    <img src={`http://${Server.data.ip}:8484/Image/poster/${data.hinh}`}  className="float-start" width={204} height={300} />
                 </div>
                 <div className="col-xs-9 col-sm-9 col-md-9 col-lg-9">
                     <h2 style={{ color: "red" }}>{data.tenPhim}</h2>

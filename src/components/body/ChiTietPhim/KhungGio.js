@@ -1,18 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import $ from 'jquery';
 
 import { Link } from 'react-router-dom';
 import { stringify } from 'qs';
+import { AppContext } from '../../../Context/AppProvider';
 
 function KhungGio({maCN, maPhim, handleCheck}) {
     const [data, setData] = useState([]);
     // const [isShow,setIsShow] = useState(true);
     let temp = JSON.parse(sessionStorage.getItem("xuatchieu"));
+    const Server = useContext(AppContext);
     useEffect(() => {
         $.ajax({
             type: "get",
             async: false,
-            url: "http://localhost:8484/api/ngay/getGioBatDau",
+            url: `http://${Server.data.ip}:8484/api/ngay/getGioBatDau`,
             data: {maPhim: maPhim, maCN: maCN},
             dataType: "json",
             success: function (response) {

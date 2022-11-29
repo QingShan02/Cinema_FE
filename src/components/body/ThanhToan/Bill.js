@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import $ from 'jquery';
 import { getCookie } from 'react-use-cookie';
 import { Link } from 'react-router-dom';
 import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 import Paypal from './Paypal';
 import QRCodeCanvas from 'qrcode.react';
+import { AppContext } from '../../../Context/AppProvider';
 
 function Bill() {
     let data = JSON.parse(sessionStorage.getItem("ghe"));
@@ -12,6 +13,7 @@ function Bill() {
     let data2 = JSON.parse(sessionStorage.getItem("topping"));
     const [idve1, setIdve] = useState("");
     console.log(data2);
+    const Server = useContext(AppContext);
     // const cookie = JSON.parse(getCookie("customer"));
     let tp = null;
     let giatp = 0;
@@ -43,41 +45,41 @@ function Bill() {
         document.getElementById('exampleModal').style.display = "none";
         document.getElementById('exampleModal').style.opacity = 0;
     }
-    const downloadQR = () => {
+    const downloadQR = (e) => {
         const canvas = document.getElementById('qrcode');
-        let url = canvas.toDataURL();
-        var blobBin = atob(url.split(',')[1]);
-        var array = [];
-        for (var i = 0; i < blobBin.length; i++) {
-            array.push(blobBin.charCodeAt(i));
-        }
-        var file = new Blob([new Uint8Array(array)], { type: 'image/png' });
-
+        let file= null;
+        canvas.toBlob((blob) => {
+            file = new File([blob], e+".jpg", { type: "image/jpeg" })
+            console.log(file,blob);
+            var formdata = new FormData();
         console.log(file);
-        var formdata = new FormData();
         formdata.append("file", file);
         console.log(formdata);
         $.ajax({
-            url: "http://localhost:8484/upload",
+            url: `http://${Server.data.ip}:8484/upload`,
             type: "POST",
             data: formdata,
             processData: false,
             contentType: false,
         }).done(function (respond) {
-            alert(respond);
+            console.log(respond);
+            // alert(respond);
         });
+          }, 'image/jpeg');
+        
     };
     const handleClick = (e) => {
         // e.preventDefault();
         $.ajax({
             type: "get",
-            url: "http://localhost:8484/api/ve/insertVe",
+            url: `http://${Server.data.ip}:8484/api/ve/insertVe`,
             data: temp,
             async: false,
             dataType: "json",
             success: function (response) {
-                console.log(response);
+                console.log("idve:"+response);
                 setIdve(response);
+                downloadQR(response);
             },
             error: function (e) {
                 console.log(e);
@@ -87,7 +89,7 @@ function Bill() {
             $.ajax({
                 type: "get",
                 async: false,
-                url: "http://localhost:8484/api/tp/insertCTTP",
+                url: `http://${Server.data.ip}:8484/api/tp/insertCTTP`,
                 data: { idve: idve1, maTopping: data2.maTopping, soLuongMua: data2.soluongmua },
                 dataType: "json",
                 success: function (response) {
@@ -99,7 +101,6 @@ function Bill() {
             });
         }
         UnHideNofi();
-        downloadQR();
     }
     return (
         <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -173,7 +174,7 @@ function Bill() {
                                         size={256}
                                         id="qrcode"
                                         style={{ height: "auto", maxWidth: "100%", width: "100%" }}
-                                        value={`http://192.168.106.18:3000/RapChieuPhim_Web/qrCodeVe/${idve1}`}
+                                        value={`http://${Server.data.ip}:3000/RapChieuPhim_Web/qrCodeVe/${idve1}`}
                                         viewBox={`0 0 256 256`}
                                     />
                                 </div>

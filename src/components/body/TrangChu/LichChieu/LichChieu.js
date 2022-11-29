@@ -1,7 +1,8 @@
 import Carousel from 'react-bootstrap/Carousel';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import $ from 'jquery';
 import "./stylelc.css";
+import { AppContext } from '../../../../Context/AppProvider';
 
 // const breakPoints = [
 //     { width: 1, itemsToShow: 1 },
@@ -14,11 +15,12 @@ function LichChieu() {
     const [data1, setData1] = useState([]);
     const [isShow, setIsShow] = useState(false);
     const [ngay, setngay] = useState([]);
+    const Server = useContext(AppContext);
     useEffect(() => {
         $.ajax({
             type: "GET",
             async: false,
-            url: "http://localhost:8484/api/ngay/getNgay",
+            url: `http://${Server.data.ip}:8484/api/ngay/getNgay`,
             data: [],
             dataType: "json",
             success: function (response) {
@@ -31,7 +33,7 @@ function LichChieu() {
         $.ajax({
             type: "GET",
             async: false,
-            url: "http://localhost:8484/api/xuatchieu/XuatChieuTheoNgay",
+            url: `http://${Server.data.ip}:8484/api/xuatchieu/XuatChieuTheoNgay`,
             data: { ngay: ngay },
             dataType: "json",
             success: function (response) {
@@ -51,7 +53,7 @@ function LichChieu() {
             <h4 className="card-title title">{s.tenPhim}</h4>
             <div className='col-lg-12 d-flex card2' style={{ paddingTop: '10px', paddingBottom: '10px' }}>
                 <div className="col-lg-2">
-                    <img src={`http://localhost:8484/Image/poster/${s.hinh}`} alt="" style={{ height: '220px', width: '180px', borderRadius: '0px' }} />
+                    <img src={`http://${Server.data.ip}:8484/Image/poster/${s.hinh}`} alt="" style={{ height: '220px', width: '180px', borderRadius: '0px' }} />
                 </div>
                 <div className='col-lg-1' style={{ background: '#000', height: '220', width: '2px', marginRight: '5px' }}></div>
                 <div className="col-lg-6">

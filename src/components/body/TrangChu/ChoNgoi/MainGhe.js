@@ -1,14 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useState } from 'react';
 import Ghe from './Ghe';
 import $ from 'jquery';
+import { AppContext } from '../../../../Context/AppProvider';
 function MainGhe({obj}) {
     const [data,setData] = useState([]);
+    const Server = useContext(AppContext);
     useEffect(() => {
         $.ajax({
             type: "get",
             async: false,
-            url: "http://localhost:8484/api/cn/findGhePhim",
+            url: `http://${Server.data.ip}:8484/api/cn/findGhePhim`,
             data: obj,
             dataType: "json",
             success: function (response) {

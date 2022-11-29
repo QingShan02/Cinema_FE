@@ -1,17 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useEffect, useState } from 'react';
 import $ from 'jquery';
 import './lichchieu.css';
 import KhungGio from './KhungGio';
+import { AppContext } from '../../../Context/AppProvider';
 function LichChieu({maPhim}) {
     const [data, setData] = useState([]);
     const [isShow,setIsShow] = useState();
-
+const Server = useContext(AppContext);
     useEffect(() => {
         $.ajax({
             type: "get",
             async: false,
-            url: "http://localhost:8484/api/chinhanh/getAllChiNhanh",
+            url: `http://${Server.data.ip}:8484/api/chinhanh/getAllChiNhanh`,
             data: [],
             dataType: "json",
             success: function (response) {

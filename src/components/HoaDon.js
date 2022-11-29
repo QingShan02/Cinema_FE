@@ -33,7 +33,7 @@ function HoaDon() {
         <p>Tên khách hàng: {result.tenkh}</p>
         <p>Nơi xem: T1 Cinema - {result.diachi}</p>
         <hr/>
-        <img className='d-block mx-auto' src={`${Server.data.API_IMAGE}/Image/poster/${result.hinh}`} height="300px"/>
+        <img className='d-block mx-auto' src={`http://${Server.data.ip}:8484/Image/poster/${result.hinh}`} height="300px"/>
         <p>Loại vé: <span className='btn btn-success'>{result.tenloai}</span> </p>
         <p>Tên khách hàng: {result.tenghe}</p>
         <p>Tên Phim: {result.tenPhim}</p>
