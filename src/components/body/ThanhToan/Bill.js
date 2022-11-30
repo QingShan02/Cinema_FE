@@ -56,9 +56,10 @@ function Bill() {
         formdata.append("file", file);
         console.log(formdata);
         $.ajax({
-            url: `http://${Server.data.ip}:8484/upload`,
+            url: `http://${Server.data.ip}:8484/saveQRCode`,
             type: "POST",
             data: formdata,
+            async:false,
             processData: false,
             contentType: false,
         }).done(function (respond) {
@@ -79,6 +80,8 @@ function Bill() {
             success: function (response) {
                 console.log("idve:"+response);
                 setIdve(response);
+                UnHideNofi();
+
                 downloadQR(response);
             },
             error: function (e) {
@@ -100,7 +103,6 @@ function Bill() {
                 }
             });
         }
-        UnHideNofi();
     }
     return (
         <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
