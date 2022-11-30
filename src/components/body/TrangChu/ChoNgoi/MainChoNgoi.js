@@ -30,7 +30,7 @@ function MainChoNgoi() {
             <div className='container'>
                 <div className='row'>
                     <HangGhe />
-                    <MainGhe obj={data.state} />
+                    <MainGhe obj={{stt_xc:JSON.parse(sessionStorage.getItem("xuatchieu")).stt_xc}} />
                     <ChuThich />
                     <Link className="btn btn-primary" onClick={handleClick} to="/tp">Tiếp theo</Link>
                 </div>
