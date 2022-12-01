@@ -6,7 +6,6 @@ import KhungGio from './KhungGio';
 import { AppContext } from '../../../Context/AppProvider';
 function LichChieu({maPhim}) {
     const [data, setData] = useState([]);
-    const [isShow,setIsShow] = useState();
 const Server = useContext(AppContext);
     useEffect(() => {
         $.ajax({

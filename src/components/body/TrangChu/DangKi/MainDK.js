@@ -1,6 +1,6 @@
 import React from 'react';
 import KhungDK from './KhungDK';
-import RanDom from './RanDom';
+// import RanDom from './RanDom';
 
 function mainDk() {
     return (
@@ -8,7 +8,6 @@ function mainDk() {
             sessionStorage.clear();
         }}>
             <KhungDK />
-            <RanDom />
         </div>
     );
 }

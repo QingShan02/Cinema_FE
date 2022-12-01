@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import $ from 'jquery';
 
 import { Link } from 'react-router-dom';
-import { stringify } from 'qs';
 import { AppContext } from '../../../Context/AppProvider';
 
 function KhungGio({maCN, maPhim, handleCheck}) {

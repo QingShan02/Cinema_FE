@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import $ from 'jquery';
-import Collapse from './collapse';
 import { Link } from 'react-router-dom';
 import { getCookie } from 'react-use-cookie';
 import LichChieu from './LichChieu';

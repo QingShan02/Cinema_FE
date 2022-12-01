@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import "./styleKH.css";
 function Card(props) {
     const [isShow, setIsShow] = useState(false);
     let khoi = null;
     if (isShow) {
         khoi = (
-            <div className="d-block btn btn-default" >
+            <div className="d-block" >
                 <p><span>Id Vé:</span> {props.idve}</p>
                 <p><span>Giờ bắt đầu:</span> {props.giobatdau}</p>
                 <p><span>Tổng giá vé:</span> {props.giaVe}</p>
@@ -27,7 +27,7 @@ function Card(props) {
                     <p className="font-weight-bold" style={{ marginTop: '2px', color: 'rgba(0, 0, 0, 0.6)' }}><span>Xem ngày:</span> {props.ngay}</p>
                 </div>
                 <div>
-                    <a className="font-weight-bold app" style={{ marginTop: '2px', color: '#0000FF' }} onClick={() => { setIsShow(!isShow) }}>Chi tiết</a>
+                    <button type='button' className="btn btn-waring" style={{ marginTop: '2px', color: '#0000FF' }} onClick={() => { setIsShow(!isShow) }}>Chi tiết</button>
                 </div>
             </div>
             {khoi}

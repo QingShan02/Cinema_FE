@@ -1,4 +1,3 @@
-// import React, { Component, useState } from 'react';
 import React from 'react';
 import ChuyenDe from './ChuyenDe';
 function TrangChuComponent(props) {

@@ -1,7 +1,6 @@
 import React from 'react';
 import { useEffect } from 'react';
 import ChuThich from './ChuThich';
-import Ghe from './Ghe';
 import HangGhe from './HangGhe';
 import TieuDePhong from './TieuDePhong';
 import { Link, useLocation } from 'react-router-dom';
@@ -18,7 +17,7 @@ function MainChoNgoi() {
         });
     }, []);
     function handleClick(event) {
-        if ((sessionStorage.getItem("ghe")) == null || (sessionStorage.getItem("ghe")) == "") {
+        if ((sessionStorage.getItem("ghe")) === null || (sessionStorage.getItem("ghe")) === "") {
             event.preventDefault();
             alert("chưa chọn ghế");
         }

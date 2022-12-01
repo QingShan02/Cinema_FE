@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 import { Link } from 'react-router-dom';
 
@@ -10,7 +10,7 @@ function KhungDK() {
 
 
     useEffect(() => {
-        if (capt == '') {
+        if (capt === '') {
             let allCharacters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
                 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd',
                 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
@@ -41,7 +41,7 @@ function KhungDK() {
             let randomCode = allNumber[Math.floor(Math.random() * allNumber.length)];
             setCode(value => { return randomCode + value });
         }
-    }, [])
+    }, []);
 
     const sendEmail = (e) => {
         let email = sessionStorage.getItem('email');

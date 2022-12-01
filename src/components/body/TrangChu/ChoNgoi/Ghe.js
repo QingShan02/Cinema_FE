@@ -1,7 +1,5 @@
 // import React from 'react';
-import $ from 'jquery';
-import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useRef } from 'react';
 
 function Ghe({ obj }) {
     // const [data, setData] = useState([]);
@@ -31,7 +29,7 @@ function Ghe({ obj }) {
         sessionStorage.setItem("ghe", "");
         setMau(ref.current);
     };
-    if (obj.idVe == 0) {
+    if (obj.idVe === 0) {
         // if (obj.maGhe !== e.maGhe) {
         //     return <div className="col-xs-1 col-sm-1 col-md-1 col-lg-1" key={e.maGhe}>
         //         <button className={`card text-center my-2 py-2  ${color}`} onClick={() => {
