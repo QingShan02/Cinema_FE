@@ -219,7 +219,7 @@ function Bill() {
                                         </tr></tfoot></table>
                             </div>
                             <div className="modal-footer">
-                                <button type="button" onClick={HideNofi} className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <Link to="/" onClick={HideNofi} className="btn btn-secondary" data-bs-dismiss="modal">Close</Link>
                                 {/* <button type="button" className="btn btn-primary">Save changes</button> */}
                             </div>
                         </div>

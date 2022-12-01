@@ -1,9 +1,11 @@
 import TieuDePhim from "./TieuDePhim";
 import React from 'react';
-import { useLocation } from "react-router";
+import { useLocation,useParams } from "react-router";
 import { useEffect } from "react";
 function MainCTPhim(props) {
 const data = useLocation();
+const {id} = useParams();
+console.log(data);
 useEffect(() => {
     window.scrollTo({
         top: 0,
@@ -11,7 +13,7 @@ useEffect(() => {
         behavior: "smooth"
       });
   }, []);
-    return ( <TieuDePhim maPhim={data.state.maPhim}/> );
+    return ( <TieuDePhim maPhim={id}/> );
 }
 
 export default MainCTPhim;

@@ -4,7 +4,7 @@ import $ from 'jquery';
 import './lichchieu.css';
 import KhungGio from './KhungGio';
 import { AppContext } from '../../../Context/AppProvider';
-function LichChieu({maPhim}) {
+function LichChieu({maPhim, tenPhim}) {
     const [data, setData] = useState([]);
 const Server = useContext(AppContext);
     useEffect(() => {
@@ -26,7 +26,7 @@ const Server = useContext(AppContext);
 
         return   <div key={s.maCN} className="name">
                 <div style={{fontSize:20,textAlign:'center'}} className="tenchinhanh">{s.tenCN}</div>
-                <KhungGio maCN={s.maCN} maPhim = {maPhim}  />
+                <KhungGio maCN={s.maCN} maPhim = {maPhim} tenPhim={tenPhim}  />
         </div>
 
     });

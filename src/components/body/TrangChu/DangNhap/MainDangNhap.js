@@ -4,20 +4,22 @@ import "./DangNhap.css";
 import FacebookLogin from 'react-facebook-login';
 import {  useNavigate } from 'react-router-dom';
 import useCookie from 'react-use-cookie';
+import { useContext } from 'react';
+import { AppContext } from '../../../../Context/AppProvider';
 
 function MainDangNhap() {
     const [infoFB, setInfoFB] = useState({});
     const [inputs, setInputs] = useState({});
     const [cookie, setCookie] = useCookie("customer");
     let history = useNavigate();
-  
+    const Server = useContext(AppContext);
     const handleSubmit = (event) => {
   
       event.preventDefault();
       console.log(inputs);
       $.ajax({
         type: "GET",
-        url: "http://localhost:8484/api/kh/findKH",
+        url: `http://${Server.data.ip}:8484/api/kh/findKH`,
         data: inputs,
         dataType: "json",
         async: false,

@@ -55,25 +55,25 @@ function TieuDePhim(props) {
             gioBatDau: e.target.text
         }));
     }
-    const temp = a.map(s => {
-        if (getCookie("customer") == '') {
-            return <div key={s} className="col-xs-6 col-sm-6 col-md-6 col-lg-6" >
-                <Link className='btn btn-primary' onClick={(e) => {
-                    if (!window.confirm("Vui lòng đăng nhập trước")) {
-                        e.preventDefault();
-                    }
-                }} state={{ path: window.location.pathname }} to='/signin'>{s}</Link><br></br>
-            </div>
-        } else {
-            return <div key={s} className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                <Link className='btn btn-primary' onClick={handleCheck} state={{
-                    ngay: '2022-11-22',
-                    gioBatDau: s
-                }} to={`/cn/${props.maPhim}`}>{s}</Link><br></br>
+    // const temp = a.map(s => {
+    //     if (getCookie("customer") == '') {
+    //         return <div key={s} className="col-xs-6 col-sm-6 col-md-6 col-lg-6" >
+    //             <Link className='btn btn-primary' onClick={(e) => {
+    //                 if (!window.confirm("Vui lòng đăng nhập trước")) {
+    //                     e.preventDefault();
+    //                 }
+    //             }} state={{ path: window.location.pathname }} to='/signin'>{s}</Link><br></br>
+    //         </div>
+    //     } else {
+    //         return <div key={s} className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    //             <Link className='btn btn-primary' onClick={handleCheck} state={{
+    //                 ngay: '2022-11-22',
+    //                 gioBatDau: s
+    //             }} to={`/cn/${props.maPhim}`}>{s}</Link><br></br>
 
-            </div>
-        }
-    })
+    //         </div>
+    //     }
+    // })
     // let nd = null;
     // if (!isHide) {
     //     nd = (<div className="row mt-10" style={{ height: 350 }} >
@@ -89,7 +89,7 @@ function TieuDePhim(props) {
         nd1 = <iframe className='w-75 pt-10 d-block mx-auto ' style={{ padding: '25px 50px' }} height={350} src={data.traller} ></iframe>
     } else if (isShow === 3) {
         nd1 =<div>
-        <LichChieu maPhim = {data.maPhim} />
+        <LichChieu maPhim = {data.maPhim} tenPhim={data.tenPhim} />
 
         </div> 
     }

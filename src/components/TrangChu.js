@@ -1,6 +1,6 @@
 import Menu from './Header/Menu';
 import TrangChuComponent from './body/TrangChu/TrangChuComponent';
-import FooterComponent from './footer/FooterComponent';
+import FooterComponent from './body/TrangChu/footer/FooterComponent';
 import React, { useState } from 'react';
 import { BrowserRouter, Route, Link, NavLink, Routes } from "react-router-dom";
 import MainKH from './body/TrangChu/ThongTinkhachHang/MainKH';
@@ -33,15 +33,18 @@ function TrangChu() {
 
 
 
-          <Routes>
-            <Route path='/' exact element={<TrangChuComponent />}></Route>
+          <Routes >
+            <Route path='/' exact element={<TrangChuComponent />}>
+            </Route>
             <Route path='/pro' element={<MainKH />}></Route>
-            <Route path='/ctphim/*' element={<MainCTPhim />}></Route>
-            <Route path='/cn/*' element={<MainChoNgoi />}></Route>
+            <Route path='ctphim/:id' index element={<MainCTPhim />}></Route>
+            <Route path='ctphim/:id/stt=:id' index element={<MainChoNgoi />}></Route>
+            <Route path='ctphim/:id/stt=:id/tp/thanhtoan/' element={< MainThanhToan />}></Route>
+
+            {/* <Route path='/cn/*' element={<MainChoNgoi />}></Route> */}
             <Route path='/dk/*' element={<MainDk />}></Route>
-            <Route path='/tp/*' element={<MainTP />}></Route>
+            <Route path='ctphim/:id/stt=:id/tp' element={<MainTP />}></Route>
             <Route path='/XacNhan' element={<MainXN />}></Route>
-            <Route path='/thanhtoan/*' element={< MainThanhToan />}></Route>
             <Route path='/pro/*' element={< MainKH />}></Route>
             <Route path='/lc/*' element={< MainLC />}></Route>
           </Routes>

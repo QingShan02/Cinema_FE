@@ -3,13 +3,13 @@ import HinhTP from "./HinhTP";
 import TenTP from "./TenTP";
 import { useEffect, useState } from 'react';
 import $ from 'jquery';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 function MainTP(props) {
     const [data, setData] = useState([]);
     const [inputs, setInputs] = useState({});
     const [gia, setGia] = useState({});
-
+    const loaction = useLocation();
     useEffect(() => {
         sessionStorage.removeItem("topping");
         $.ajax({
@@ -60,7 +60,7 @@ function MainTP(props) {
 
             <div className="col-xs-9 col-sm-9 col-md-9 col-lg-9" />
 
-            <Link className="btn btn-danger mt-4 mb-4 col-2" to="/thanhtoan">Thanh toán</Link>
+            <Link className="btn btn-danger mt-4 mb-4 col-2" to={`${loaction.pathname}/thanhtoan`}>Thanh toán</Link>
 
         </div>
 
