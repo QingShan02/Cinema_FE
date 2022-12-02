@@ -6,6 +6,7 @@ import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 import Paypal from './Paypal';
 import QRCodeCanvas from 'qrcode.react';
 import { AppContext } from '../../../Context/AppProvider';
+import { useEffect } from 'react';
 
 function Bill() {
     let data = JSON.parse(sessionStorage.getItem("ghe"));
@@ -13,8 +14,31 @@ function Bill() {
     let data2 = JSON.parse(sessionStorage.getItem("topping"));
     const [idve1, setIdve] = useState("");
     console.log(data2);
+    useEffect(()=>{
+        if(idve1!=""){
+            downloadQR(idve1);
+        }
+        if (data2 != null && idve1!="") {
+            $.ajax({
+                type: "get",
+                async: false,
+                url: `http://${Server.data.ip}:8484/api/order/insert`,
+                data: { idVe: idve1, maTopping: data2.maTopping, soLuongMua: data2.soluongmua },
+                dataType: "json",
+                success: function (response) {
+                    console.log(response);
+                    console.log({ idve: idve1, maTopping: data2.maTopping, soLuongMua: data2.soluongmua });
+                },
+                error: function (e) {
+                    console.log(e);
+                    console.log({ idve: idve1, maTopping: data2.maTopping, soLuongMua: data2.soluongmua });
+
+                }
+            });
+        }
+    },[idve1]);
     const Server = useContext(AppContext);
-    // const cookie = JSON.parse(getCookie("customer"));
+    const cookie = JSON.parse(getCookie("customer"));
     let tp = null;
     let giatp = 0;
     if (data2 !== null) {
@@ -33,17 +57,19 @@ function Bill() {
 
     let temp = '';
     if (data2 != null) {
-        temp = { giaVe: data.gia * 1.05 + giatp, thueVat: 0.05, maCTGhe: data.maCTGhe, maKH: 1, stt_xc: data1.stt_xc };
+        temp = { giaVe: data.gia * 1.05, thueVat: 0.05, maCTGhe: data.maCTGhe, maKH: cookie.maKH, stt_xc: data1.stt_xc };
     } else {
-        temp = { giaVe: data.gia * 1.05, thueVat: 0.05, maCTGhe: data.maCTGhe, maKH: 1, stt_xc: data1.stt_xc };
+        temp = { giaVe: data.gia * 1.05, thueVat: 0.05, maCTGhe: data.maCTGhe, maKH: cookie.maKH, stt_xc: data1.stt_xc };
     }
     const UnHideNofi = () => {
         document.getElementById('exampleModal').style.display = "block";
+        document.getElementById('exampleModal').style.backgroundColor="rgba(0,0,0,0.75)";
         document.getElementById('exampleModal').style.opacity = 1;
     }
     const HideNofi = () => {
         document.getElementById('exampleModal').style.display = "none";
         document.getElementById('exampleModal').style.opacity = 0;
+        sessionStorage.clear();
     }
     const downloadQR = (e) => {
         const canvas = document.getElementById('qrcode');
@@ -78,31 +104,16 @@ function Bill() {
             async: false,
             dataType: "json",
             success: function (response) {
-                console.log("idve:"+response);
                 setIdve(response);
                 UnHideNofi();
 
-                downloadQR(response);
             },
             error: function (e) {
                 console.log(e);
             }
         });
-        if (data2 != null) {
-            $.ajax({
-                type: "get",
-                async: false,
-                url: `http://${Server.data.ip}:8484/api/tp/insertCTTP`,
-                data: { idve: idve1, maTopping: data2.maTopping, soLuongMua: data2.soluongmua },
-                dataType: "json",
-                success: function (response) {
-                    console.log(response);
-                },
-                error: function (e) {
-                    console.log(e);
-                }
-            });
-        }
+
+        
     }
     return (
         <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -163,18 +174,20 @@ function Bill() {
                 {/* <button type="button" className="btn btn-primary" onClick={UnHideNofi} data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Launch demo modal
                 </button> */}
+                
                 <div className="modal fade" id="exampleModal" tabIndex={999} aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div className="modal-dialog" id="hehe" style={{ height: "auto", maxWidth: 1000, width: "100%" }}>
                         <div className="modal-content">
                             <div className="modal-header">
                                 <h1 className="modal-title fs-5" id="exampleModalLabel">Hóa đơn</h1>
-                                <button type="button" onClick={HideNofi} className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
+                                <Link to="/" onClick={HideNofi} className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
                             </div>
                             <div className="modal-body">
                                 <div style={{ height: "auto", margin: "0 auto", maxWidth: 64, width: "100%" }}>
                                     <QRCodeCanvas
                                         size={256}
                                         id="qrcode"
+                                        includeMargin={true}
                                         style={{ height: "auto", maxWidth: "100%", width: "100%" }}
                                         value={`http://${Server.data.ip}:3000/RapChieuPhim_Web/qrCodeVe/${idve1}`}
                                         viewBox={`0 0 256 256`}

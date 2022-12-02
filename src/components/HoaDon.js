@@ -8,6 +8,7 @@ function HoaDon() {
     let data = useLocation();
     const [result,setResult] = useState({});
     const Server = useContext(AppContext);
+    const [tp,setTp] = useState({});
     console.log(data);
     // console.log(ip);
     // console.log(`http://${Server.data.ip}:8484/api/ve/getVe`);
@@ -20,8 +21,21 @@ function HoaDon() {
             data: {idVe:data.pathname.split("/")[2]},
             dataType: "json",
             success: function (response) {
-                console.log(response);
+                // console.log(response);
                 setResult(response);
+            },error:function (e){
+                console.log(e);
+            }
+        });
+        $.ajax({
+            type: "get",
+            async:false,
+            url: `http://${Server.data.ip}:8484/api/order/getOrder`,
+            data: {idVe:data.pathname.split("/")[2]},
+            dataType: "json",
+            success: function (response) {
+                console.log(response);
+                setTp(response);
             },error:function (e){
                 console.log(e);
             }
@@ -35,12 +49,10 @@ function HoaDon() {
         <hr/>
         <img className='d-block mx-auto' src={`http://${Server.data.ip}:8484/Image/poster/${result.hinh}`} height="300px"/>
         <p>Loại vé: <span className='btn btn-success'>{result.tenloai}</span> </p>
-        <p>Tên khách hàng: {result.tenghe}</p>
+        <p>Hàng ghế: {result.tenghe}</p>
         <p>Tên Phim: {result.tenPhim}</p>
         <p>Giá vé: {(result.giaVe)}</p>
         <p>Ngày chiếu: {result.giochieu}</p>
-        
-        
     </div>
 );
 }

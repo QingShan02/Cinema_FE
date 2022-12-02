@@ -24,14 +24,14 @@ function MainTP(props) {
         });
     }, []);
 
-    const handleChange = (s,event) => {
+    const handleChange = (s, event) => {
         let topping = {
             tenTopping: s.tenTopping,
             maTopping: s.maTopping,
             soluongmua: event.target.value,
             gia: s.gia
         };
-        // console.log(s,topping);
+        console.log(s,topping);
 
         let toppingJsonString = JSON.stringify(topping);
         sessionStorage.setItem('topping', toppingJsonString);
@@ -40,23 +40,42 @@ function MainTP(props) {
     };
 
     const a = data.map((s) => {
-        return <div key={s.maTopping} className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-            <div className="card mt-3 bg-dark text-light" style={{ width: '18rem' }}>
-                <HinhTP hinhTopping={s.maTopping + ".png"} />
-                <div className="card-body">
-                    <TenTP tenTopping={s.tenTopping} />
-                    <br />
-                    <input type="number" onChange={(e)=>{handleChange(s,e)}} id={s.maTopping} name={s.tenTopping}></input>
+        return <tr key={s.maTopping}>
+            <td>
+                <div className="checkbox">
+                    <label>
+                        <input type="checkbox" defaultValue="" />
+                    </label>
                 </div>
-            </div>
-        </div>
+            </td>
+            <td><HinhTP hinhTopping={s.maTopping + ".png"} /><TenTP tenTopping={s.tenTopping} /></td>
+            <td><input type="number" onChange={(e) => { handleChange(s, e) }} id={s.maTopping} name={s.tenTopping}></input></td>
+
+
+        </tr>
+
 
     });
     // console.log(a);
 
     return (
         <div className="row bg-light">
-            {a}
+            <p className='h3'>Order Topping</p>
+            <table className="table table-hover">
+                <thead>
+                    <tr>
+                        <th />
+                        <th>Tên Topping</th>
+                        <th>Số lượng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {a}
+                </tbody>
+            </table>
+
+
+
 
             <div className="col-xs-9 col-sm-9 col-md-9 col-lg-9" />
 
