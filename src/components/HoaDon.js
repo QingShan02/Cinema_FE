@@ -41,8 +41,15 @@ function HoaDon() {
             }
         });
     },[]);
+    let temp =null;
+    if(tp !=null){
+        temp = tp.map(s=>{
+            
+        })
+    }
     return ( 
          <div id='divShowVe' className='container-fluid border d-block mx-auto ' style={{marginTop:"30px", width:"70%"}}>
+        <img src={`http://${Server.data.ip}:8484/Image/qrCode/${data.pathname.split("/")[2]}.jpg`}></img>
         <h1>Thông tin vé</h1>
         <p>Tên khách hàng: {result.tenkh}</p>
         <p>Nơi xem: T1 Cinema - {result.diachi}</p>

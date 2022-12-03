@@ -47,7 +47,7 @@ const Server  = useContext(AppContext);
     console.log(a);
     return (<div className="panel panel-default mt-20">
                         <MainTimKiem />
-                <MainHC />
+                {/* <MainHC /> */}
                 <MainBanner />
         <div className="panel-heading">
             <h3 className="panel-title text-danger">{props.title}</h3>

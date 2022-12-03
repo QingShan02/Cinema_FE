@@ -71,7 +71,10 @@ function Menu() {
             </li>
             <li className="nav-item mw-100 ">
                 <Link className="nav-link w-100  active border-bottom hvr-bounce-to-right text-white text-center" to="/"> <i className="fa fa-home" aria-hidden="true" /> Trang Chủ</Link>
-                <Link className="nav-link w-100  active border-bottom hvr-bounce-to-right text-white text-center" to="/lc"> <i aria-hidden="true" /> Lịch Chiếu</Link>
+                <Link className="nav-link w-100  active border-bottom hvr-bounce-to-right text-white text-center" to="/lc"> <i aria-hidden="true" /><i className="fa fa-calendar" aria-hidden="true"></i> Lịch Chiếu</Link>
+                <Link className="nav-link w-100  active border-bottom hvr-bounce-to-right text-white text-center" to="/lc"> <i aria-hidden="true" /><i className="fa fa-film" aria-hidden="true"></i> Phim</Link>
+                <Link className="nav-link w-100  active border-bottom hvr-bounce-to-right text-white text-center" to="/lc"> <i aria-hidden="true" /><i className="fa fa-gift" aria-hidden="true"></i> Ưu đãi</Link>
+
             </li>
 
 
