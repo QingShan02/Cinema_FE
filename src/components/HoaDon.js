@@ -21,7 +21,7 @@ function HoaDon() {
             data: {idVe:data.pathname.split("/")[2]},
             dataType: "json",
             success: function (response) {
-                // console.log(response);
+                console.log(response);
                 setResult(response);
             },error:function (e){
                 console.log(e);
@@ -45,12 +45,16 @@ function HoaDon() {
         });
     },[]);
     let temp =null;
+    let giatp = 0;
     if(tp !=null){
         temp = tp.map(s=>{
-            return <div>
+            giatp += s.soLuongMua * s.giaTopping;
+            return <div key={s.maTopping}>
                 <hr/>
+                <img width="50px" src={`http://localhost:8484/Image/topping/${s.maTopping}.png`}/>
                 <p>Topping: {s.tenTopping}</p>
                 <p>Số lượng: {s.soLuongMua}</p>
+                <p>Số lượng: {s.giaTopping}</p>
                 </div>
         })
     }
@@ -76,6 +80,8 @@ function HoaDon() {
         <p>Giá vé: {(result.giaVe)}</p>
         <p>Ngày chiếu: {result.giochieu}</p>
         {temp}
+        <hr/>
+        <p>Tổng giá vé: {result.giaVe+giatp}</p>
     </div>
 );
 }
