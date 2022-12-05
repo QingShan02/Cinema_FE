@@ -1,8 +1,8 @@
 import $ from 'jquery';
-import React, {  useState} from 'react';
+import React, { useState } from 'react';
 import "./DangNhap.css";
 import FacebookLogin from 'react-facebook-login';
-import {  useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import useCookie from 'react-use-cookie';
 import { useContext } from 'react';
 import { AppContext } from '../../../../Context/AppProvider';
@@ -14,44 +14,44 @@ function MainDangNhap() {
     let history = useNavigate();
     const Server = useContext(AppContext);
     const handleSubmit = (event) => {
-  
-      event.preventDefault();
-      console.log(inputs);
-      $.ajax({
-        type: "GET",
-        url: `http://${Server.data.ip}:8484/api/kh/findKH`,
-        data: inputs,
-        dataType: "json",
-        async: false,
-        success: function (response, data, setuo) {
-          console.log(response);
-          setCookie(JSON.stringify(response), {
-            days: 2,
-            SameSite: 'Strict',
-            Secure: true,
-          });
-  
-          history(-1);
-        }
-      });
-  
+
+        event.preventDefault();
+        console.log(inputs);
+        $.ajax({
+            type: "GET",
+            url: `http://${Server.data.ip}:8484/api/kh/findKH`,
+            data: inputs,
+            dataType: "json",
+            async: false,
+            success: function (response, data) {
+                console.log(response);
+                setCookie(JSON.stringify(response), {
+                    days: 2,
+                    SameSite: 'Strict',
+                    Secure: true,
+                });
+
+                history(-1);
+            }, 
+        });
+
     }
     const handleChange = (event) => {
-      const name = event.target.name;
-      const value = event.target.value;
-      setInputs(values => ({ ...values, [name]: value }))
+        const name = event.target.name;
+        const value = event.target.value;
+        setInputs(values => ({ ...values, [name]: value }))
     };
     const responseFacebook = async (response) => {
         setInfoFB({
             tenkh: response.name,
             email: response.email,
             idfb: response.id,
-            hinh: response.picture.data.url
+            hinhfb: response.picture.data.url
         });
         console.log(infoFB);
         $.ajax({
             type: "get",
-            url: "http://localhost:8484/api/kh/insertKH",
+            url: `http://${Server.data.ip}:8484/api/kh/insertFBKH`,
             data: infoFB,
             dataType: "json",
             success: function (response) {
@@ -63,7 +63,6 @@ function MainDangNhap() {
         });
 
         console.log(infoFB);
-        console.log(response);
     }
 
     const componentClicked = (response) => {
@@ -74,7 +73,7 @@ function MainDangNhap() {
             <div className="container">
                 <div className="row g-0" id='rowDN'>
                     <div className="col-lg-3">
-                        <img alt='hehe' src="https://th.bing.com/th/id/R.0d1c49bcccb5f67e636ee4dac8615aab?rik=Gn1UgRwOXkpNww&pid=ImgRaw&r=0" className="img-fluid" />
+                        <img alt='hehe' src="https://th.bing.com/th/id/R.0d1c49bcccb5f67e636ee4dac8615aab?rik=Gn1UgRwOXkpNww&pid=ImgRaw&r=0" id='imgBanner' className="img-fluid" style={{width:'100%'}}/>
                     </div>
                     <div className="col-lg-7 px-5 pt-5">
                         <h1 className="font-weight-bold mb-3">Log in</h1>
@@ -93,21 +92,22 @@ function MainDangNhap() {
                                     <button type="button" onClick={handleSubmit} className="btn1 my-3 p-2 mb-5"> Login</button>
                                 </div>
 
-                                <FacebookLogin
-                                    appId="1293678041410090"
+                                
+                            </div>
+                            <a href="/"> Forgot password</a>
+                            <p>Dont have a account <a href="/">Register here</a>
+                            </p>
+                        </form>
+                        <FacebookLogin
+                                    appId="706032784430584"
                                     // autoLoad={true}
-                                    fields="name,email,picture"
+                                    fields="name,email,id,picture"
                                     onClick={componentClicked}
                                     callback={responseFacebook}
                                     size='medium'
                                     icon="fa-facebook"
                                     cssClass="my-facebook-button-class"
                                 />
-                            </div>
-                            <a href="/"> Forgot password</a>
-                            <p>Dont have a account <a href="/">Register here</a>
-</p>
-                        </form>
                     </div>
                 </div>
             </div>
