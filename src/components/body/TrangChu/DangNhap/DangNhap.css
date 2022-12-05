@@ -9,7 +9,8 @@
     border-radius: 30px;
     box-shadow: 12px 12px 22px grey;
 }
-img {
+
+#imgDN {
     border-top-left-radius: 30px;
     border-bottom-left-radius: 30px;
 }

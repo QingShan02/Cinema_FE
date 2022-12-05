@@ -98,7 +98,7 @@ function MainDangNhap() {
             <div className="container">
                 <div className="row g-0" id='rowDN'>
                     <div className="col-lg-3">
-                        <img alt='hehe' src="https://th.bing.com/th/id/R.0d1c49bcccb5f67e636ee4dac8615aab?rik=Gn1UgRwOXkpNww&pid=ImgRaw&r=0" className="img-fluid" />
+                        <img alt='hehe' src="https://th.bing.com/th/id/R.0d1c49bcccb5f67e636ee4dac8615aab?rik=Gn1UgRwOXkpNww&pid=ImgRaw&r=0" id="imgDN" className="img-fluid" />
                     </div>
                     <div className="col-lg-7 px-5 pt-5">
                         <h1 className="font-weight-bold mb-3">Log in</h1>
