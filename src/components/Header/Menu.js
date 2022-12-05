@@ -21,7 +21,7 @@ function Menu() {
         if (getCookie("customer") != '') {
             setData(JSON.parse(getCookie("customer")));
             // console.log(window.history);
-            console.log(data);
+            // console.log(data);
         }
     }, []);
     // console.log(data);

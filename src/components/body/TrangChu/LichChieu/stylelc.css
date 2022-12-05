@@ -36,7 +36,7 @@
 
 .title {
     color: red;
-    box-shadow: 10px 10px 20px inset rgb(132, 198, 242);
+    /* box-shadow: 10px 10px 20px inset rgb(132, 198, 242); */
     font-style: oblique;
     width: auto;
 }

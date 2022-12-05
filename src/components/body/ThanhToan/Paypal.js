@@ -2,7 +2,7 @@ import { PayPalButtons, PayPalScriptProvider, usePayPalScriptReducer } from '@pa
 import React, { useEffect } from 'react';
 function Paypal({price, showSpinner, success }) {
     const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
-    console.log(price);
+    // console.log(price);
     // useEffect(() => {
     //     dispatch({
     //         type: "resetOptions",
