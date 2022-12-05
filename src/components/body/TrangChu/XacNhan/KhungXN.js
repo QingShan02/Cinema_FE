@@ -1,16 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import $ from 'jquery';
 function KhungXN() {
     const data = useLocation();
     const code = data.state;
+    const [IFKH, setIFKH] = useState({
+        tenKH: code.data.tenKH,
+        email: code.data.email,
+        soDT: code.data.soDT,
+        matKhau: code.data.repass
+    });
     let xtcode;
     const handle = (e) => {
         xtcode = e.target.value;
-        console.log(xtcode);
     }
+
+
+
+
+
     function xl(e) {
-        if (code !== xtcode) {
+        if (code.code !== xtcode) {
             alert('Mã xác thực không chính xác');
+            e.preventDefault();
+        }
+        else {
+            alert('Đăng kí thành công');
+            $.ajax({
+                type: "get",
+                url: "http://localhost:8484/api/kh/insertKHWEB",
+                data: IFKH,
+                dataType: "json",
+                success: function (response) {
+                    console.log(response);
+                }
+            });
             e.preventDefault();
         }
     }

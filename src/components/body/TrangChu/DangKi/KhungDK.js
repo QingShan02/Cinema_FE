@@ -15,15 +15,7 @@ function KhungDK() {
                 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd',
                 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
                 't', 'u', 'v', 'w', 'x', 'y', 'z', 0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-            // const [capt, setCapt] = useState('');
 
-            // useEffect(() => {
-
-            // }, [capt]);
-            // let temp = '';
-            // useEffect(() => {
-
-            // }, []);
             for (let i = 0; i < 6; i++) {
                 let randomCharacter = allCharacters[Math.floor(Math.random() * allCharacters.length)];
                 // temp += `${randomCharacter}`;
@@ -53,7 +45,7 @@ function KhungDK() {
                 console.log(error.text);
             });
     };
-   
+
     const handle = (e) => {
         const name = e.target.name;
         const value = e.target.value;
@@ -76,14 +68,14 @@ function KhungDK() {
                                         <span className="input-group-text"><i className="fas
                                             fa-user" /></span>
                                     </div>
-                                    <input type="text" className="form-control" name="name" onChange={handle} required placeholder="Họ và tên" />
+                                    <input type="text" className="form-control" name="tenKH" onChange={handle} required placeholder="Họ và tên" />
                                 </div>
                                 <div className="input-group form-group">
                                     <div className="input-group-prepend">
                                         <span className="input-group-text"><i className="fas
                                             fa-phone" /></span>
                                     </div>
-                                    <input type="text" className="form-control" name="phone" maxLength={10} onChange={handle} required placeholder="Số điện thoại" />
+                                    <input type="text" className="form-control" name="soDT" max Length={10} onChange={handle} required placeholder="Số điện thoại" />
                                 </div>
                                 <div className="input-group form-group">
                                     <div className="input-group-prepend">
@@ -98,7 +90,7 @@ function KhungDK() {
                                         <span className="input-group-text"><i className="fas
                                             fa-key" /></span>
                                     </div>
-                                    <input id="password-input" type="password" className="form-control" name="matkhau" required placeholder="Mật khẩu" onChange={handle} onKeyUp={() => {
+                                    <input id="password-input" type="password" className="form-control" name="pass" required placeholder="Mật khẩu" onChange={handle} onKeyUp={() => {
                                         sessionStorage.setItem('pass', JSON.stringify(data.pass));
                                     }} />
 
@@ -108,7 +100,7 @@ function KhungDK() {
                                         <span className="input-group-text"><i className="fas
                                             fa-key" /></span>
                                     </div>
-                                    <input id="password-input" type="password" className="form-control" name="NLMK" required placeholder="Nhập lại mật khẩu" onChange={handle} onKeyUp={() => {
+                                    <input id="password" type="password" className="form-control" name="repass" required placeholder="Nhập lại mật khẩu" onChange={handle} onKeyUp={() => {
                                         sessionStorage.setItem('repass', JSON.stringify(data.repass));
                                     }} />
                                 </div>
@@ -118,7 +110,6 @@ function KhungDK() {
                                         <span className="input-group-text"><i className="fas
                                             fa-wrench" /></span>
                                     </div>
-                                    {/* <input type="text" className="form-control" name="NMXN" required placeholder="Nhập mã xác nhận" /> */}
                                     <input className='form-control' name='recaptcha' type="text" onChange={handle} onKeyUp={() => {
                                         sessionStorage.setItem('recaptcha', data.recaptcha);
                                     }} placeholder="Vui lòng nhập kí tự bên dưới" maxLength={6} spellCheck="false" required />
@@ -133,12 +124,12 @@ function KhungDK() {
                                         <div>
                                             <input type="checkbox" /><span style={{ color: 'white' }} className="mx-2">Tôi đồng ý với các điều khoản của CGV</span>
                                         </div>
-                                        <Link type="submit" className="btn btn-danger px-5 fw-bold mb-2" onClick={sendEmail} to='/XacNhan' state={{ code }}>Đăng Kí</Link>
+                                        <Link type="submit" className="btn btn-danger px-5 fw-bold mb-2" onClick={sendEmail} to='/XacNhan' state={{ code, data }}>Đăng Kí</Link>
                                         {/* <input type="submit" value="ĐĂNG KÍ" className="btn
                                     float-right login_btn"  /> */}
                                     </div>
                                 </div>
-                            </form>                           
+                            </form>
                         </div>
                     </div>
                 </div>
