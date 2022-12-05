@@ -1,8 +1,8 @@
 import $ from 'jquery';
-import React, {  useState} from 'react';
+import React, { useState } from 'react';
 import "./DangNhap.css";
 import FacebookLogin from 'react-facebook-login';
-import {  useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import useCookie from 'react-use-cookie';
 import { useContext } from 'react';
 import { AppContext } from '../../../../Context/AppProvider';
@@ -14,56 +14,80 @@ function MainDangNhap() {
     let history = useNavigate();
     const Server = useContext(AppContext);
     const handleSubmit = (event) => {
-  
-      event.preventDefault();
-      console.log(inputs);
-      $.ajax({
-        type: "GET",
-        url: `http://${Server.data.ip}:8484/api/kh/findKH`,
-        data: inputs,
-        dataType: "json",
-        async: false,
-        success: function (response, data, setuo) {
-          console.log(response);
-          setCookie(JSON.stringify(response), {
-            days: 2,
-            SameSite: 'Strict',
-            Secure: true,
-          });
-  
-          history(-1);
-        }
-      });
-  
+
+        event.preventDefault();
+        console.log(inputs);
+        $.ajax({
+            type: "GET",
+            url: `http://${Server.data.ip}:8484/api/kh/findKH`,
+            data: inputs,
+            dataType: "json",
+            async: false,
+            success: function (response, data, setuo) {
+                console.log(response);
+                setCookie(JSON.stringify(response), {
+                    days: 2,
+                    SameSite: 'Strict',
+                    Secure: true,
+                });
+
+                history(-1);
+            }
+        });
+
     }
     const handleChange = (event) => {
-      const name = event.target.name;
-      const value = event.target.value;
-      setInputs(values => ({ ...values, [name]: value }))
+        const name = event.target.name;
+        const value = event.target.value;
+        setInputs(values => ({ ...values, [name]: value }))
     };
     const responseFacebook = async (response) => {
         setInfoFB({
             tenkh: response.name,
             email: response.email,
             idfb: response.id,
-            hinh: response.picture.data.url
-        });
-        console.log(infoFB);
-        $.ajax({
-            type: "get",
-            url: "http://localhost:8484/api/kh/insertKH",
-            data: infoFB,
-            dataType: "json",
-            success: function (response) {
-                console.log(response);
-            },
-            error: function (e) {
-                console.log(e);
-            }
+            hinhfb: response.picture.data.url
         });
 
-        console.log(infoFB);
-        console.log(response);
+        const insertKH = () => {
+            $.ajax({
+                type: "get",
+                url: "http://localhost:8484/api/kh/insertFBKH",
+                data: infoFB,
+                async: false,
+                dataType: "json",
+                success: function (response) {
+                    console.log(response);
+                },
+                error: function (e) {
+                    console.log(e);
+                }
+            });
+        }
+
+        do {
+            $.ajax({
+                type: "GET",
+                url: `http://${Server.data.ip}:8484/api/kh/findFBKH`,
+                data: infoFB,
+                dataType: "json",
+                async: false,
+                success: function (response, data, setuo) {
+                    console.log(response);
+                    setCookie(JSON.stringify(response), {
+                        days: 2,
+                        SameSite: 'Strict',
+                        Secure: true,
+                    });
+
+                    history(-1);
+                },
+                error: insertKH()
+            });
+        } while (JSON.stringify(response) === '{}')
+
+        // console.log(infoFB);
+        // console.log(response);
     }
 
     const componentClicked = (response) => {
@@ -94,9 +118,9 @@ function MainDangNhap() {
                                 </div>
 
                                 <FacebookLogin
-                                    appId="1293678041410090"
+                                    appId="706032784430584"
                                     // autoLoad={true}
-                                    fields="name,email,picture"
+                                    fields="name,email,id,picture"
                                     onClick={componentClicked}
                                     callback={responseFacebook}
                                     size='medium'
@@ -106,7 +130,7 @@ function MainDangNhap() {
                             </div>
                             <a href="/"> Forgot password</a>
                             <p>Dont have a account <a href="/">Register here</a>
-</p>
+                            </p>
                         </form>
                     </div>
                 </div>
