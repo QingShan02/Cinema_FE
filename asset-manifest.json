@@ -1,15 +1,17 @@
 {
   "files": {
-    "main.css": "/RapChieuPhim_Web/static/css/main.3d434c3d.css",
-    "main.js": "/RapChieuPhim_Web/static/js/main.acc1156b.js",
+    "main.css": "/RapChieuPhim_Web/static/css/main.71278311.css",
+    "main.js": "/RapChieuPhim_Web/static/js/main.90a33532.js",
     "static/js/787.7bfd2ec6.chunk.js": "/RapChieuPhim_Web/static/js/787.7bfd2ec6.chunk.js",
+    "static/media/background-den-3.jpg": "/RapChieuPhim_Web/static/media/background-den-3.4f3fde9a40745c32fb67.jpg",
+    "static/media/background_KH.jpg": "/RapChieuPhim_Web/static/media/background_KH.8ed46f241bd0ccce000f.jpg",
     "index.html": "/RapChieuPhim_Web/index.html",
-    "main.3d434c3d.css.map": "/RapChieuPhim_Web/static/css/main.3d434c3d.css.map",
-    "main.acc1156b.js.map": "/RapChieuPhim_Web/static/js/main.acc1156b.js.map",
+    "main.71278311.css.map": "/RapChieuPhim_Web/static/css/main.71278311.css.map",
+    "main.90a33532.js.map": "/RapChieuPhim_Web/static/js/main.90a33532.js.map",
     "787.7bfd2ec6.chunk.js.map": "/RapChieuPhim_Web/static/js/787.7bfd2ec6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3d434c3d.css",
-    "static/js/main.acc1156b.js"
+    "static/css/main.71278311.css",
+    "static/js/main.90a33532.js"
   ]
 }
