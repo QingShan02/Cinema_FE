@@ -11,50 +11,59 @@ import { useEffect } from 'react';
 function Bill() {
     let data = JSON.parse(sessionStorage.getItem("ghe"));
     let data1 = JSON.parse(sessionStorage.getItem("xuatchieu"));
-    let data2 = JSON.parse(sessionStorage.getItem("topping"));
+    let data2 = null;
+    if(sessionStorage.getItem("topping")==""){
+        data2 ="";
+    } else{
+        data2 =JSON.parse(sessionStorage.getItem("topping"));
+    }
+
     const [idve1, setIdve] = useState("");
-    console.log(data2);
     useEffect(()=>{
         if(idve1!=""){
             downloadQR(idve1);
         }
-        if (data2 != null && idve1!="") {
-            $.ajax({
-                type: "get",
-                async: false,
-                url: `http://${Server.data.ip}:8484/api/order/insert`,
-                data: { idVe: idve1, maTopping: data2.maTopping, soLuongMua: data2.soluongmua },
-                dataType: "json",
-                success: function (response) {
-                    console.log(response);
-                    console.log({ idve: idve1, maTopping: data2.maTopping, soLuongMua: data2.soluongmua });
-                },
-                error: function (e) {
-                    console.log(e);
-                    console.log({ idve: idve1, maTopping: data2.maTopping, soLuongMua: data2.soluongmua });
-
-                }
+        if (data2 !="" && idve1!="") {
+            data2.forEach(s=>{
+                $.ajax({
+                    type: "get",
+                    async: false,
+                    url: `http://${Server.data.ip}:8484/api/order/insert`,
+                    data: { idVe: idve1, maTopping: s.maTopping, soLuongMua: s.soluongmua },
+                    dataType: "json",
+                    success: function (response) {
+                        console.log(response);
+                        console.log({ idve: idve1, maTopping: s.maTopping, soLuongMua: s.soluongmua });
+                    },
+                    error: function (e) {
+                        console.log(e);
+    
+                    }
+                });
             });
+            
         }
     },[idve1]);
     const Server = useContext(AppContext);
     const cookie = JSON.parse(getCookie("customer"));
     let tp = null;
     let giatp = 0;
-    if (data2 !== null) {
+    if (data2 !=="") {
         console.log(data2);
-        giatp = (data2.gia * data2.soluongmua);
-        tp = (<tr>
-            <td >2</td>
-            <td >{data2.tenTopping}</td>
-            <td >{data2.soluongmua}</td>
-            <td >{(data2.gia).toLocaleString('vi', { style: 'currency', currency: 'VND' })}</td>
-            <td >{(data2.gia * data2.soluongmua).toLocaleString('vi', { style: 'currency', currency: 'VND' })}</td>
-        </tr>);
+        tp = data2.map((s)=>{
+            giatp += s.soluongmua * s.gia;
+            return <tr>
+            <td ></td>
+            <td >{s.tenTopping}</td>
+            <td >{s.soluongmua}</td>
+            <td >{(s.gia).toLocaleString('vi', { style: 'currency', currency: 'VND' })}</td>
+            <td >{(s.gia * s.soluongmua).toLocaleString('vi', { style: 'currency', currency: 'VND' })}</td>
+        </tr>;
+        })
     } else if (data2 == '' || data2 == null) {
         tp = '';
     }
-
+    console.log(giatp);
     let temp = '';
     if (data2 != null) {
         temp = { giaVe: data.gia * 1.05, thueVat: 0.05, maCTGhe: data.maCTGhe, maKH: cookie.maKH, stt_xc: data1.stt_xc };
