@@ -1,4 +1,4 @@
-import React, {  useState } from 'react';
+import React, { useState } from 'react';
 import "./styleKH.css";
 function Card(props) {
     const [isShow, setIsShow] = useState(false);
@@ -8,6 +8,7 @@ function Card(props) {
             <div className="d-block" >
                 <p><span>Id Vé:</span> {props.idve}</p>
                 <p><span>Giờ bắt đầu:</span> {props.giobatdau}</p>
+                <p><span>Tên ghế:</span> {props.tenghe}</p>
                 <p><span>Tổng giá vé:</span> {props.giaVe}</p>
             </div>
         );
