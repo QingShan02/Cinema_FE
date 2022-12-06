@@ -35,7 +35,7 @@ function KhungDK() {
         }
     }, []);
 
-    const sendEmail = (e) => {
+    const sendEmail = () => {
         let email = sessionStorage.getItem('email');
         emailjs.send('service_76rhmqm', 'template_y7qq009', { to_email: email, message: code }, 'aYN1rK9I-975kaFc3', {
         })
@@ -46,6 +46,17 @@ function KhungDK() {
             });
     };
 
+    const kt = (e) => {
+        if (data.pass == data.repass && data.recaptcha == data1) {
+            sendEmail();
+        } else if (data.pass == data.repass && data.recaptcha != data1) {
+            alert("Mã captcha không chính xác!");
+            e.preventDefault();
+        } else if (data.pass != data.repass && data.recaptcha == data1) {
+            alert("Mật khẩu xác thực không chính xác!");
+            e.preventDefault();
+        }
+    }
     const handle = (e) => {
         const name = e.target.name;
         const value = e.target.value;
@@ -124,7 +135,7 @@ function KhungDK() {
                                         <div>
                                             <input type="checkbox" /><span style={{ color: 'white' }} className="mx-2">Tôi đồng ý với các điều khoản của CGV</span>
                                         </div>
-                                        <Link type="submit" className="btn btn-danger px-5 fw-bold mb-2" onClick={sendEmail} to='/XacNhan' state={{ code, data }}>Đăng Kí</Link>
+                                        <Link type="submit" className="btn btn-danger px-5 fw-bold mb-2" onClick={kt} to='/XacNhan' state={{ code, data }}>Đăng Kí</Link>
                                         {/* <input type="submit" value="ĐĂNG KÍ" className="btn
                                     float-right login_btn"  /> */}
                                     </div>
