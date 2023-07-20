@@ -18,7 +18,6 @@ const Server  = useContext(AppContext);
             data: [],
             dataType: "json",
             success: function (response) {
-                console.log(response);
                 setData(response);
             }
         });

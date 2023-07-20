@@ -18,8 +18,6 @@ function KhungGio({ maCN, maPhim, tenPhim }) {
             data: { maPhim: maPhim, maCN: maCN },
             dataType: "json",
             success: function (response) {
-
-                // console.log(response.length);
                 setData(response);
             }, error: function (a) {
                 console.log(a);

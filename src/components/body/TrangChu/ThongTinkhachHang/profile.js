@@ -36,9 +36,7 @@ function Profile() {
   }
   const downloadQR = (e) => {
     var formdata = new FormData();
-    console.log(Avatar);
     formdata.append("file", Avatar);
-    console.log(formdata);
     $.ajax({
       url: `http://spring-aws-rapchieuphim.ap-southeast-2.elasticbeanstalk.com/saveQRCode`,
       type: "POST",
@@ -47,7 +45,6 @@ function Profile() {
       processData: false,
       contentType: false,
     }).done(function (respond) {
-      console.log(respond);
     });
   };
 
@@ -62,8 +59,6 @@ function Profile() {
       </div>
     )
   }
-  console.log(img);
-  console.log(data2.maKH);
   useEffect(() => {
     $.ajax({
       type: "get",

@@ -27,7 +27,6 @@ function LichChieu() {
             data: [],
             dataType: "json",
             success: function (response) {
-                console.log(response);
                 setData(response)
             }
         });
@@ -40,7 +39,6 @@ function LichChieu() {
             data: [],
             dataType: "json",
             success: function (response) {
-                console.log(response);
                 setData2(response)
             }
         });
@@ -53,7 +51,6 @@ function LichChieu() {
             data: { ngay: ngay, macn: cn, gioBatDau: giobatdau1 },
             dataType: "json",
             success: function (response) {
-                console.log(response);
                 setData1(response)
             }
         });
@@ -66,7 +63,6 @@ function LichChieu() {
             data: { maCN: cn, ngay: ngay },
             dataType: "json",
             success: function (response) {
-                console.log(response);
                 setData_gbd(response)
             }
         });
@@ -84,15 +80,11 @@ function LichChieu() {
         setngay(e);
 
     };
-    console.log(cn);
-    console.log(ngay);
-    console.log(giobatdau1);
     const gbd = datagiobd.map((s, gbd) => {
         return <div key={gbd}>
             <li className='gbd' onClick={() => setgiobatdau(s.gioBatDau)} >{s.gioBatDau}</li>
         </div>
     });
-    console.log(gbd);
     const phim = data1.slice(0, data1.length).map((s, idd) => {
         let b = { ...temp, ...s };
         return <div key={idd} className="cardlc" style={{ border: '1px solid #000', width: 'auto', maxWidth: '1200px', marginLeft: '0px', marginBottom: '20px', maxHeight: 'auto' }}>
@@ -125,7 +117,6 @@ function LichChieu() {
         }}>
             <button className='button'>{s.ngay} </button></Carousel.Item >
     })
-    console.log({ phim });
     return (
         <div className='main' style={{ height: 'auto', maxHeight: 'auto', minHeight: '100vh' }} >
             <Carousel interval={null} className=' text-center col-lg-12 carousell' style={{ width: '100%' }} pause='hover' nextLabel='null'>

@@ -20,18 +20,14 @@ function Menu() {
     useEffect(() => {
         if (getCookie("customer") != '') {
             setData(JSON.parse(getCookie("customer")));
-            // console.log(window.history);
-            // console.log(data);
         }
     }, []);
-    // console.log(data);
     let fm;
     let menu = null;
     if (isShow) {
         menu = <ul className="dropdown-menu d-block " style={{ backgroundColor: "transparent", position: "static" }} id="menu">
             <li><Link className="dropdown-item hvr-bounce-to-right text-white  text-center" to="/pro">Thông tin cá nhân</Link></li>
             <li><a className="dropdown-item hvr-bounce-to-right text-white  text-center" onClick={() => { removeCookie("customer"); setData(null) }} >Đăng xuất</a></li>
-            {/* <li><a className="dropdown-item text-white" href="#">A third link</a></li> */}
         </ul>;
     } else {
         menu = '';

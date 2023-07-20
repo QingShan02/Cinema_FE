@@ -6,7 +6,6 @@ import LichChieu from './LichChieu';
 import { AppContext } from '../../../Context/AppProvider';
 function TieuDePhim(props) {
     const [data, setData] = useState(props.maPhim);
-    // console.log(data);
     const [a, setA] = useState(new Array());
     const [isHide, setIsHide] = useState(false);
     const [ngay, setNgay] = useState('');
@@ -26,10 +25,7 @@ function TieuDePhim(props) {
             success: function (response) {
                 response.listTheloai = Object.values(response.listTheloai).toString();
                 response.traller = response.traller.replace("watch?v=", "embed/");
-                console.log(response.khunggio);
                 setA(response.khunggio);
-                // console.log(response);
-                //  console.log(Object.values(response.khunggio));
                 setData(response);
 
             }, error: function (a) {
@@ -37,15 +33,11 @@ function TieuDePhim(props) {
             }
         });
 
-        // console.log(isHide);
     }, []);
     const handleChange = (e) => {
-        // console.log(e.target.value);
         setNgay(e.target.value);
     }
     useEffect(() => {
-        // console.log(isHide);
-
     }, [isHide]);
     const handleCheck = (e) => {
         sessionStorage.setItem("xuatchieu", JSON.stringify({
@@ -55,34 +47,6 @@ function TieuDePhim(props) {
             gioBatDau: e.target.text
         }));
     }
-    // const temp = a.map(s => {
-    //     if (getCookie("customer") == '') {
-    //         return <div key={s} className="col-xs-6 col-sm-6 col-md-6 col-lg-6" >
-    //             <Link className='btn btn-primary' onClick={(e) => {
-    //                 if (!window.confirm("Vui lòng đăng nhập trước")) {
-    //                     e.preventDefault();
-    //                 }
-    //             }} state={{ path: window.location.pathname }} to='/signin'>{s}</Link><br></br>
-    //         </div>
-    //     } else {
-    //         return <div key={s} className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-    //             <Link className='btn btn-primary' onClick={handleCheck} state={{
-    //                 ngay: '2022-11-22',
-    //                 gioBatDau: s
-    //             }} to={`/cn/${props.maPhim}`}>{s}</Link><br></br>
-
-    //         </div>
-    //     }
-    // })
-    // let nd = null;
-    // if (!isHide) {
-    //     nd = (<div className="row mt-10" style={{ height: 350 }} >
-
-    //     </div>);
-    // } else {
-    //     nd = ();
-    // }
-    // console.log(temp);
     if (isShow === 1) {
         nd1 = <div className="row mt-10" style={{ height: 200, fontSize: 18, padding: '15px 30px' }} > {data.moTa}</div>
     } else if (isShow === 2) {

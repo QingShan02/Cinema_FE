@@ -15,7 +15,6 @@ const Server = useContext(AppContext);
             data: [],
             dataType: "json",
             success: function (response) {
-                console.log(response);
                 setData(response);
             }, error: function (a) {
                 console.log(a);
@@ -30,10 +29,6 @@ const Server = useContext(AppContext);
         </div>
 
     });
-    // if(b.length){
-    //     b = <></>;
-    // }
-    // console.log(b);
     return (
         <div>
         { b }

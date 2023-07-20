@@ -9,10 +9,6 @@ function HoaDon() {
     const [result,setResult] = useState({});
     const Server = useContext(AppContext);
     const [tp,setTp] = useState([]);
-    console.log(data);
-    // console.log(ip);
-    // console.log(`http://spring-aws-rapchieuphim.ap-southeast-2.elasticbeanstalk.com/api/ve/getVe`);
-    // console.log(data.pathname.split("/")[2]);
     useEffect(()=>{
         $.ajax({
             type: "get",
@@ -21,7 +17,6 @@ function HoaDon() {
             data: {idVe:data.pathname.split("/")[2]},
             dataType: "json",
             success: function (response) {
-                console.log(response);
                 setResult(response);
             },error:function (e){
                 console.log(e);

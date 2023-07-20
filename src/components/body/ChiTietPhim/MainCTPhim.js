@@ -5,7 +5,6 @@ import { useEffect } from "react";
 function MainCTPhim(props) {
 const data = useLocation();
 const {id} = useParams();
-console.log(data);
 useEffect(() => {
     window.scrollTo({
         top: 0,

@@ -12,19 +12,19 @@ function Bill() {
     let data = JSON.parse(sessionStorage.getItem("ghe"));
     let data1 = JSON.parse(sessionStorage.getItem("xuatchieu"));
     let data2 = null;
-    if(sessionStorage.getItem("topping")==""){
-        data2 ="";
-    } else{
-        data2 =JSON.parse(sessionStorage.getItem("topping"));
+    if (sessionStorage.getItem("topping") == "") {
+        data2 = "";
+    } else {
+        data2 = JSON.parse(sessionStorage.getItem("topping"));
     }
 
     const [idve1, setIdve] = useState("");
-    useEffect(()=>{
-        if(idve1!=""){
+    useEffect(() => {
+        if (idve1 != "") {
             downloadQR(idve1);
         }
-        if (data2 !="" && idve1!="") {
-            data2.forEach(s=>{
+        if (data2 != "" && idve1 != "") {
+            data2.forEach(s => {
                 $.ajax({
                     type: "get",
                     async: false,
@@ -32,38 +32,35 @@ function Bill() {
                     data: { idVe: idve1, maTopping: s.maTopping, soLuongMua: s.soluongmua },
                     dataType: "json",
                     success: function (response) {
-                        console.log(response);
                         console.log({ idve: idve1, maTopping: s.maTopping, soLuongMua: s.soluongmua });
                     },
                     error: function (e) {
                         console.log(e);
-    
+
                     }
                 });
             });
-            
+
         }
-    },[idve1]);
+    }, [idve1]);
     const Server = useContext(AppContext);
     const cookie = JSON.parse(getCookie("customer"));
     let tp = null;
     let giatp = 0;
-    if (data2 !=="") {
-        console.log(data2);
-        tp = data2.map((s)=>{
+    if (data2 !== "") {
+        tp = data2.map((s) => {
             giatp += s.soluongmua * s.gia;
             return <tr>
-            <td ></td>
-            <td >{s.tenTopping}</td>
-            <td >{s.soluongmua}</td>
-            <td >{(s.gia).toLocaleString('vi', { style: 'currency', currency: 'VND' })}</td>
-            <td >{(s.gia * s.soluongmua).toLocaleString('vi', { style: 'currency', currency: 'VND' })}</td>
-        </tr>;
+                <td ></td>
+                <td >{s.tenTopping}</td>
+                <td >{s.soluongmua}</td>
+                <td >{(s.gia).toLocaleString('vi', { style: 'currency', currency: 'VND' })}</td>
+                <td >{(s.gia * s.soluongmua).toLocaleString('vi', { style: 'currency', currency: 'VND' })}</td>
+            </tr>;
         })
     } else if (data2 == '' || data2 == null) {
         tp = '';
     }
-    console.log(giatp);
     let temp = '';
     if (data2 != null) {
         temp = { giaVe: data.gia * 1.05, thueVat: 0.05, maCTGhe: data.maCTGhe, maKH: cookie.maKH, stt_xc: data1.stt_xc };
@@ -72,7 +69,7 @@ function Bill() {
     }
     const UnHideNofi = () => {
         document.getElementById('exampleModal').style.display = "block";
-        document.getElementById('exampleModal').style.backgroundColor="rgba(0,0,0,0.75)";
+        document.getElementById('exampleModal').style.backgroundColor = "rgba(0,0,0,0.75)";
         document.getElementById('exampleModal').style.opacity = 1;
     }
     const HideNofi = () => {
@@ -82,27 +79,24 @@ function Bill() {
     }
     const downloadQR = (e) => {
         const canvas = document.getElementById('qrcode');
-        let file= null;
+        let file = null;
         canvas.toBlob((blob) => {
-            file = new File([blob], e+".jpg", { type: "image/jpeg" })
-            console.log(file,blob);
+            file = new File([blob], e + ".jpg", { type: "image/jpeg" })
             var formdata = new FormData();
-        console.log(file);
-        formdata.append("file", file);
-        console.log(formdata);
-        $.ajax({
-            url: `http://spring-aws-rapchieuphim.ap-southeast-2.elasticbeanstalk.com/saveQRCode`,
-            type: "POST",
-            data: formdata,
-            async:false,
-            processData: false,
-            contentType: false,
-        }).done(function (respond) {
-            console.log(respond);
-            // alert(respond);
-        });
-          }, 'image/jpeg');
-        
+            formdata.append("file", file);
+            $.ajax({
+                url: `http://spring-aws-rapchieuphim.ap-southeast-2.elasticbeanstalk.com/saveQRCode`,
+                type: "POST",
+                data: formdata,
+                async: false,
+                processData: false,
+                contentType: false,
+            }).done(function (respond) {
+                console.log(respond);
+                // alert(respond);
+            });
+        }, 'image/jpeg');
+
     };
     const handleClick = (e) => {
         // e.preventDefault();
@@ -122,7 +116,7 @@ function Bill() {
             }
         });
 
-        
+
     }
     return (
         <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -183,7 +177,7 @@ function Bill() {
                 {/* <button type="button" className="btn btn-primary" onClick={UnHideNofi} data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Launch demo modal
                 </button> */}
-                
+
                 <div className="modal fade" id="exampleModal" tabIndex={999} aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div className="modal-dialog" id="hehe" style={{ height: "auto", maxWidth: 1000, width: "100%" }}>
                         <div className="modal-content">
