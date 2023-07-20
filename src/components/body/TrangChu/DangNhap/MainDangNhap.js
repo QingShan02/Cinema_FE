@@ -19,7 +19,7 @@ function MainDangNhap() {
         console.log(inputs);
         $.ajax({
             type: "GET",
-            url: `http://${Server.data.ip}:8484/api/kh/findKH`,
+            url: `http://spring-aws-rapchieuphim.ap-southeast-2.elasticbeanstalk.com/api/kh/findKH`,
             data: inputs,
             dataType: "json",
             async: false,
@@ -52,7 +52,7 @@ function MainDangNhap() {
         const insertKH = () => {
             $.ajax({
                 type: "get",
-                url: "http://localhost:8484/api/kh/insertFBKH",
+                url: "http://spring-aws-rapchieuphim.ap-southeast-2.elasticbeanstalk.com//api/kh/insertFBKH",
                 data: infoFB,
                 async: false,
                 dataType: "json",
@@ -68,7 +68,7 @@ function MainDangNhap() {
         do {
             $.ajax({
                 type: "GET",
-                url: `http://${Server.data.ip}:8484/api/kh/findFBKH`,
+                url: `http://spring-aws-rapchieuphim.ap-southeast-2.elasticbeanstalk.com/api/kh/findFBKH`,
                 data: infoFB,
                 dataType: "json",
                 async: false,

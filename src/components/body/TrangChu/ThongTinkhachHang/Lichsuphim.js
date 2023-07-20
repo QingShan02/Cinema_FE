@@ -8,7 +8,7 @@ function Lichsuphim() {
   useEffect(() => {
     $.ajax({
       type: "get",
-      url: "http://localhost:8484/api/ve/LichSuVe",
+      url: "http://spring-aws-rapchieuphim.ap-southeast-2.elasticbeanstalk.com//api/ve/LichSuVe",
       data: { maKH: data2.maKH },
       dataType: "json",
       success: function (response) {

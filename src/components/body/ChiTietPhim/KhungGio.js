@@ -14,7 +14,7 @@ function KhungGio({ maCN, maPhim, tenPhim }) {
         $.ajax({
             type: "get",
             async: false,
-            url: `http://${Server.data.ip}:8484/api/ngay/getGioBatDau`,
+            url: `http://spring-aws-rapchieuphim.ap-southeast-2.elasticbeanstalk.com/api/ngay/getGioBatDau`,
             data: { maPhim: maPhim, maCN: maCN },
             dataType: "json",
             success: function (response) {

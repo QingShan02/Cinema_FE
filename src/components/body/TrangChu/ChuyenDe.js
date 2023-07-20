@@ -14,7 +14,7 @@ const Server  = useContext(AppContext);
         $.ajax({
             type: "GET",
             async: false,
-            url: `http://${Server.data.ip}:8484/api/phim/getAllPhim`,
+            url: `http://spring-aws-rapchieuphim.ap-southeast-2.elasticbeanstalk.com/api/phim/getAllPhim`,
             data: [],
             dataType: "json",
             success: function (response) {
@@ -31,7 +31,7 @@ const Server  = useContext(AppContext);
     const a = data.map((s) => {
         return <div key={s.maPhim} className='col-xs-3 col-sm-6 col-md-3 col-lg-3 mb-2 shadow-sm'>
             <div className="card" >
-                <img className="card-img-top " src={`http://${Server.data.ip}:8484/Image/poster/${s.hinh}`} height="300" alt="Card image cap" />
+                <img className="card-img-top " src={`http://spring-aws-rapchieuphim.ap-southeast-2.elasticbeanstalk.com/Image/poster/${s.hinh}`} height="300" alt="Card image cap" />
                 <div className="card-body " >
                     <h5 className="card-title">{s.tenPhim}</h5>
                     <p className="card-text">{s.thoiLuong}</p>

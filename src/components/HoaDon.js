@@ -11,13 +11,13 @@ function HoaDon() {
     const [tp,setTp] = useState([]);
     console.log(data);
     // console.log(ip);
-    // console.log(`http://${Server.data.ip}:8484/api/ve/getVe`);
+    // console.log(`http://spring-aws-rapchieuphim.ap-southeast-2.elasticbeanstalk.com/api/ve/getVe`);
     // console.log(data.pathname.split("/")[2]);
     useEffect(()=>{
         $.ajax({
             type: "get",
             async:false,
-            url: `http://${Server.data.ip}:8484/api/ve/getVe`,
+            url: `http://spring-aws-rapchieuphim.ap-southeast-2.elasticbeanstalk.com/api/ve/getVe`,
             data: {idVe:data.pathname.split("/")[2]},
             dataType: "json",
             success: function (response) {
@@ -30,7 +30,7 @@ function HoaDon() {
         $.ajax({
             type: "get",
             async:false,
-            url: `http://${Server.data.ip}:8484/api/order/getOrder`,
+            url: `http://spring-aws-rapchieuphim.ap-southeast-2.elasticbeanstalk.com/api/order/getOrder`,
             data: {idVe:data.pathname.split("/")[2]},
             dataType: "json",
             success: function (response) {
@@ -51,7 +51,7 @@ function HoaDon() {
             giatp += s.soLuongMua * s.giaTopping;
             return <div key={s.maTopping}>
                 <hr/>
-                <img width="50px" src={`http://localhost:8484/Image/topping/${s.maTopping}.png`}/>
+                <img width="50px" src={`http://spring-aws-rapchieuphim.ap-southeast-2.elasticbeanstalk.com//Image/topping/${s.maTopping}.png`}/>
                 <p>Topping: {s.tenTopping}</p>
                 <p>Số lượng: {s.soLuongMua}</p>
                 <p>Số lượng: {s.giaTopping}</p>
@@ -68,12 +68,12 @@ function HoaDon() {
     }
     return ( 
          <div id='divShowVe' className='container-fluid border d-block mx-auto ' style={{marginTop:"30px", width:"70%"}}>
-        <img src={`http://${Server.data.ip}:8484/Image/qrCode/${data.pathname.split("/")[2]}.jpg`}></img>
+        <img src={`http://spring-aws-rapchieuphim.ap-southeast-2.elasticbeanstalk.com/Image/qrCode/${data.pathname.split("/")[2]}.jpg`}></img>
         <h1>Thông tin vé</h1>
         <p>Tên khách hàng: {result.tenkh}</p>
         <p>Nơi xem: T1 Cinema - {result.diachi}</p>
         <hr/>
-        <img className='d-block mx-auto' src={`http://${Server.data.ip}:8484/Image/poster/${result.hinh}`} height="300px"/>
+        <img className='d-block mx-auto' src={`http://spring-aws-rapchieuphim.ap-southeast-2.elasticbeanstalk.com/Image/poster/${result.hinh}`} height="300px"/>
         <p>Loại vé: <span className={`btn btn-${maloai}`}>{result.tenloai}</span> </p>
         <p>Hàng ghế: {result.tenghe}</p>
         <p>Tên Phim: {result.tenPhim}</p>

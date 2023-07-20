@@ -13,7 +13,7 @@ function Profile() {
   useEffect(() => {
     $.ajax({
       type: "get",
-      url: "http://localhost:8484/api/kh/getOneKH",
+      url: "http://spring-aws-rapchieuphim.ap-southeast-2.elasticbeanstalk.com//api/kh/getOneKH",
       data: { maKH: data2.maKH },
       success: function (response) {
         setData(response)
@@ -40,7 +40,7 @@ function Profile() {
     formdata.append("file", Avatar);
     console.log(formdata);
     $.ajax({
-      url: `http://${Server.data.ip}:8484/saveQRCode`,
+      url: `http://spring-aws-rapchieuphim.ap-southeast-2.elasticbeanstalk.com/saveQRCode`,
       type: "POST",
       data: formdata,
       async: false,
@@ -58,7 +58,7 @@ function Profile() {
   } else {
     anh = (
       <div className="col-lg-4" style={{ maxHeight: '170px', height: '170px', marginLeft: '20px', width: '120px' }}>
-        <img src={`http://localhost:8484/Image/qrCode/${data.hinhFB}`} className="w-100 h-100" style={{ borderRadius: '0px' }} alt="" />
+        <img src={`http://spring-aws-rapchieuphim.ap-southeast-2.elasticbeanstalk.com//Image/qrCode/${data.hinhFB}`} className="w-100 h-100" style={{ borderRadius: '0px' }} alt="" />
       </div>
     )
   }
@@ -67,7 +67,7 @@ function Profile() {
   useEffect(() => {
     $.ajax({
       type: "get",
-      url: "http://localhost:8484/api/kh/updateKH2",
+      url: "http://spring-aws-rapchieuphim.ap-southeast-2.elasticbeanstalk.com//api/kh/updateKH2",
       data: { maKH: data2.maKH, hinhfb: img },
       dataType: "json",
       async: false,

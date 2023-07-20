@@ -28,7 +28,7 @@ function KhungXN() {
         else {
             $.ajax({
                 type: "get",
-                url: "http://localhost:8484/api/kh/insertKHWEB",
+                url: "http://spring-aws-rapchieuphim.ap-southeast-2.elasticbeanstalk.com//api/kh/insertKHWEB",
                 data: IFKH,
                 dataType: "json",
                 success: function (response) {

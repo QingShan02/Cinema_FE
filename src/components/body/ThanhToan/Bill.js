@@ -28,7 +28,7 @@ function Bill() {
                 $.ajax({
                     type: "get",
                     async: false,
-                    url: `http://${Server.data.ip}:8484/api/order/insert`,
+                    url: `http://spring-aws-rapchieuphim.ap-southeast-2.elasticbeanstalk.com/api/order/insert`,
                     data: { idVe: idve1, maTopping: s.maTopping, soLuongMua: s.soluongmua },
                     dataType: "json",
                     success: function (response) {
@@ -91,7 +91,7 @@ function Bill() {
         formdata.append("file", file);
         console.log(formdata);
         $.ajax({
-            url: `http://${Server.data.ip}:8484/saveQRCode`,
+            url: `http://spring-aws-rapchieuphim.ap-southeast-2.elasticbeanstalk.com/saveQRCode`,
             type: "POST",
             data: formdata,
             async:false,
@@ -108,7 +108,7 @@ function Bill() {
         // e.preventDefault();
         $.ajax({
             type: "get",
-            url: `http://${Server.data.ip}:8484/api/ve/insertVe`,
+            url: `http://spring-aws-rapchieuphim.ap-southeast-2.elasticbeanstalk.com/api/ve/insertVe`,
             data: temp,
             async: false,
             dataType: "json",

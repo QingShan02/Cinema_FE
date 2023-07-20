@@ -10,7 +10,7 @@ function MainGhe({obj}) {
         $.ajax({
             type: "get",
             async: false,
-            url: `http://${Server.data.ip}:8484/api/cn/findGhePhim`,
+            url: `http://spring-aws-rapchieuphim.ap-southeast-2.elasticbeanstalk.com/api/cn/findGhePhim`,
             data: obj,
             dataType: "json",
             success: function (response) {

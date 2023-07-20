@@ -11,7 +11,7 @@ const Server = useContext(AppContext);
         $.ajax({
             type: "get",
             async: false,
-            url: `http://${Server.data.ip}:8484/api/chinhanh/getAllChiNhanh`,
+            url: `http://spring-aws-rapchieuphim.ap-southeast-2.elasticbeanstalk.com/api/chinhanh/getAllChiNhanh`,
             data: [],
             dataType: "json",
             success: function (response) {

@@ -2,9 +2,9 @@ import React, { useState, createContext } from 'react';
 export const AppContext = createContext();
 function AppProvider({ children }) {
     const [data, setData] = useState({
-        ip: "localhost",
-        API_VE_ADDRESS: "http://" + "localhost" + ":8484/api/ve",
-        API_IMAGE: "http://" + "localhost" + ":8484"
+        ip: "http://spring-aws-rapchieuphim.ap-southeast-2.elasticbeanstalk.com/",
+        API_VE_ADDRESS: "http://spring-aws-rapchieuphim.ap-southeast-2.elasticbeanstalk.com/"+ "api/ve",
+        API_IMAGE: "http://spring-aws-rapchieuphim.ap-southeast-2.elasticbeanstalk.com"
     });
     return (<AppContext.Provider value={{ data }}>
         {children}
