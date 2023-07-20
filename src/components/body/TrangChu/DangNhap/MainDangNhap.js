@@ -52,7 +52,7 @@ function MainDangNhap() {
         const insertKH = () => {
             $.ajax({
                 type: "get",
-                url: "http://spring-aws-rapchieuphim.ap-southeast-2.elasticbeanstalk.com//api/kh/insertFBKH",
+                url: "http://spring-aws-rapchieuphim.ap-southeast-2.elasticbeanstalk.com/api/kh/insertFBKH",
                 data: infoFB,
                 async: false,
                 dataType: "json",

@@ -23,7 +23,7 @@ function LichChieu() {
         $.ajax({
             type: "GET",
             async: false,
-            url: "http://spring-aws-rapchieuphim.ap-southeast-2.elasticbeanstalk.com//api/ngay/getNgay",
+            url: "http://spring-aws-rapchieuphim.ap-southeast-2.elasticbeanstalk.com/api/ngay/getNgay",
             data: [],
             dataType: "json",
             success: function (response) {
@@ -36,7 +36,7 @@ function LichChieu() {
         $.ajax({
             type: "GET",
             async: false,
-            url: "http://spring-aws-rapchieuphim.ap-southeast-2.elasticbeanstalk.com//api/chinhanh/getAllChiNhanh",
+            url: "http://spring-aws-rapchieuphim.ap-southeast-2.elasticbeanstalk.com/api/chinhanh/getAllChiNhanh",
             data: [],
             dataType: "json",
             success: function (response) {
@@ -49,7 +49,7 @@ function LichChieu() {
         $.ajax({
             type: "GET",
             async: false,
-            url: "http://spring-aws-rapchieuphim.ap-southeast-2.elasticbeanstalk.com//api/xuatchieu/XuatChieuTheoNgay",
+            url: "http://spring-aws-rapchieuphim.ap-southeast-2.elasticbeanstalk.com/api/xuatchieu/XuatChieuTheoNgay",
             data: { ngay: ngay, macn: cn, gioBatDau: giobatdau1 },
             dataType: "json",
             success: function (response) {
@@ -62,7 +62,7 @@ function LichChieu() {
         $.ajax({
             type: "GET",
             async: false,
-            url: "http://spring-aws-rapchieuphim.ap-southeast-2.elasticbeanstalk.com//api/ngay/getgiobatdau1ngay",
+            url: "http://spring-aws-rapchieuphim.ap-southeast-2.elasticbeanstalk.com/api/ngay/getgiobatdau1ngay",
             data: { maCN: cn, ngay: ngay },
             dataType: "json",
             success: function (response) {
@@ -99,7 +99,7 @@ function LichChieu() {
             <h4 className="card-title title">{s.tenPhim}</h4>
             <div className='col-lg-12 d-flex card2 row' style={{ paddingTop: '10px', paddingBottom: '10px', maxHeight: 'auto' }}>
                 <div className="col-lg-3 col-xs-12">
-                    <img src={`http://spring-aws-rapchieuphim.ap-southeast-2.elasticbeanstalk.com//Image/poster/${s.hinh}`} alt="" style={{ height: '220px', width: '180px', borderRadius: '0px', marginBottom: '2px' }} />
+                    <img src={`http://spring-aws-rapchieuphim.ap-southeast-2.elasticbeanstalk.com/Image/poster/${s.hinh}`} alt="" style={{ height: '220px', width: '180px', borderRadius: '0px', marginBottom: '2px' }} />
                 </div>
                 <div className="col-lg-8 col-xs-12 d-flex">
                     <div className='' style={{ background: '#000', height: '220px', width: '2px', marginRight: '5px' }}></div>

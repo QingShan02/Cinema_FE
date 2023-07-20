@@ -51,7 +51,7 @@ function HoaDon() {
             giatp += s.soLuongMua * s.giaTopping;
             return <div key={s.maTopping}>
                 <hr/>
-                <img width="50px" src={`http://spring-aws-rapchieuphim.ap-southeast-2.elasticbeanstalk.com//Image/topping/${s.maTopping}.png`}/>
+                <img width="50px" src={`http://spring-aws-rapchieuphim.ap-southeast-2.elasticbeanstalk.com/Image/topping/${s.maTopping}.png`}/>
                 <p>Topping: {s.tenTopping}</p>
                 <p>Số lượng: {s.soLuongMua}</p>
                 <p>Số lượng: {s.giaTopping}</p>

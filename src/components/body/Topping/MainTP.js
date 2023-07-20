@@ -16,7 +16,7 @@ function MainTP(props) {
         sessionStorage.removeItem("topping");
         $.ajax({
             type: "GET",
-            url: "http://spring-aws-rapchieuphim.ap-southeast-2.elasticbeanstalk.com//api/tp/getAllTP",
+            url: "http://spring-aws-rapchieuphim.ap-southeast-2.elasticbeanstalk.com/api/tp/getAllTP",
             data: [],
             dataType: "json",
             success: function (response) {
