@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/RapChieuPhim_Web/static/css/main.44b1d3d9.css",
-    "main.js": "/RapChieuPhim_Web/static/js/main.39d980cb.js",
+    "main.js": "/RapChieuPhim_Web/static/js/main.cae1331c.js",
     "static/js/787.7bfd2ec6.chunk.js": "/RapChieuPhim_Web/static/js/787.7bfd2ec6.chunk.js",
     "static/media/background_KH.jpg": "/RapChieuPhim_Web/static/media/background_KH.8ed46f241bd0ccce000f.jpg",
     "index.html": "/RapChieuPhim_Web/index.html",
     "main.44b1d3d9.css.map": "/RapChieuPhim_Web/static/css/main.44b1d3d9.css.map",
-    "main.39d980cb.js.map": "/RapChieuPhim_Web/static/js/main.39d980cb.js.map",
+    "main.cae1331c.js.map": "/RapChieuPhim_Web/static/js/main.cae1331c.js.map",
     "787.7bfd2ec6.chunk.js.map": "/RapChieuPhim_Web/static/js/787.7bfd2ec6.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.44b1d3d9.css",
-    "static/js/main.39d980cb.js"
+    "static/js/main.cae1331c.js"
   ]
 }
